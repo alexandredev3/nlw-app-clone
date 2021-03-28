@@ -40,10 +40,20 @@ export default function Input({ inputGroup, ...rest }: Props): JSX.Element {
       />
       <ChakraInput
         layerStyle="input"
-        bgColor="black.50"
+        bg="black.50"
         size="lg"
         paddingLeft={16}
         focusBorderColor="purple.50"
+        variant="filled"
+        backgroundColor="black.800"
+        height="68px"
+        color="white.50"
+        _hover={null}
+        _focus={{
+          bgColor: 'none',
+          borderWidth: '2px',
+          borderColor: 'purple.50',
+        }}
         onBlur={handleInputBlur}
         onFocus={handleInputFocus}
         {...rest}

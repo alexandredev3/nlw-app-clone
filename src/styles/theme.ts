@@ -1,7 +1,5 @@
 import { theme, extendTheme } from '@chakra-ui/react';
 
-// Colocar a fonte Roboto.
-
 const customTheme = extendTheme({
   fonts: {
     body: "'Roboto', sans-serif",
@@ -29,13 +27,6 @@ const customTheme = extendTheme({
     base: {
       bg: 'black.50',
       height: '100vh',
-    },
-    input: {
-      borderWidth: 0,
-      variant: 'filled',
-      backgroundColor: 'black.800',
-      height: '68px',
-      color: 'white.50',
     },
   },
   textStyles: {
