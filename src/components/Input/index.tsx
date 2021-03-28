@@ -2,7 +2,6 @@ import {
   InputGroup,
   Input as ChakraInput,
   InputProps,
-  InputGroupProps,
   InputLeftElement,
 } from '@chakra-ui/react';
 
@@ -10,11 +9,7 @@ import { useState } from 'react';
 import NameIcon from '../NameIcon';
 import EmailIcon from '../EmailIcon';
 
-interface Props extends InputProps {
-  inputGroup?: InputGroupProps;
-}
-
-export default function Input({ inputGroup, ...rest }: Props): JSX.Element {
+export default function Input({ ...rest }: InputProps): JSX.Element {
   const [isFocus, setIsFocus] = useState(false);
 
   const icons = {
@@ -31,7 +26,7 @@ export default function Input({ inputGroup, ...rest }: Props): JSX.Element {
   }
 
   return (
-    <InputGroup {...inputGroup}>
+    <InputGroup>
       <InputLeftElement
         border={0}
         height="68px"
