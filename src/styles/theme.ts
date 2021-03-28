@@ -1,10 +1,18 @@
 import { theme, extendTheme } from '@chakra-ui/react';
 
+// Colocar a fonte Roboto.
+
 const customTheme = extendTheme({
   fonts: {
-    body: 'Roboto, system-ui, sans-serif',
-    heading: 'Roboto, system-ui, sans-serif',
-    mono: 'Roboto, system-ui, sans-serif',
+    body: "'Roboto', sans-serif",
+    heading: "'Roboto', sans-serif",
+    mono: "'Roboto', sans-serif",
+  },
+  fontSizes: {
+    ...theme.fontSizes,
+  },
+  space: {
+    ...theme.space,
   },
   fontWeights: {
     ...theme.fontWeights,
@@ -14,35 +22,51 @@ const customTheme = extendTheme({
   },
   radii: {
     ...theme.radii,
+    sm: '5px',
     md: '8px',
   },
+  layerStyles: {
+    base: {
+      bg: 'black.50',
+      height: '100vh',
+    },
+    input: {
+      borderWidth: 0,
+      variant: 'filled',
+      backgroundColor: 'black.800',
+      height: '68px',
+      color: 'white.50',
+    },
+  },
+  textStyles: {
+    h1: {
+      fontWeight: 'bold',
+      color: 'grey.100',
+      fontSize: 74,
+    },
+    h3: {
+      fontWeight: 'medium',
+      color: 'grey.100',
+      fontSize: 28,
+    },
+  },
   colors: {
+    white: {
+      50: '#ffff',
+      100: '#E1E1E6',
+    },
     black: {
-      50: '#f2f2f3',
-      100: '#d7d7d7',
-      200: '#bdbdbd',
-      300: '#a2a2a2',
-      400: '#878789',
-      500: '#6e6e70',
-      600: '#565656',
-      700: '#3d3d3d',
-      800: '#121214',
-      900: '#0c0c0d',
+      50: '#121214',
+      100: '#202024',
     },
     grey: {
-      50: '#f1f1f8',
-      100: '#d5d5dc',
-      200: '#b9b9c3',
-      300: '#9e9eaa',
-      400: '#838292',
-      500: '#696879',
-      600: '#51515e',
-      700: '#3a3a44',
-      800: '#23232a',
-      900: '#0c0c13',
+      50: '#E1E1E6',
+      100: '#A8A8B3',
+      200: '#737380',
+      300: '#323238',
     },
     purple: {
-      50: '#f0e8ff',
+      50: '#8257E5',
       100: '#cebcf8',
       200: '#ad91ef',
       300: '#8c64e7',
@@ -56,7 +80,7 @@ const customTheme = extendTheme({
     green: {
       50: '#dcffed',
       100: '#aeffd3',
-      200: '#7efeb8',
+      200: '#04e168',
       300: '#4dfc9c',
       400: '#1efb81',
       500: '#04e168',

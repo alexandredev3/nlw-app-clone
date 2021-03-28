@@ -31,7 +31,9 @@
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
-    "import/extensions": ["off"]
+    "import/extensions": ["off"],
+    "react/no-children-prop": "off",
+    "react/require-default-props": "off"
   },
   "settings": {
     "import/resolver": {
