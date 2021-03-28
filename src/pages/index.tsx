@@ -10,6 +10,7 @@ import {
   StackDivider,
   Center,
   Heading,
+  Wrap,
 } from '@chakra-ui/react';
 
 import Input from '../components/Input';
@@ -91,13 +92,10 @@ export default function Subscribe(): JSX.Element {
             Inscrição gratuita
           </Heading>
 
-          <Input name="name" type="text" placeholder="Digite seu nome" />
-          <Input
-            name="email"
-            type="text"
-            placeholder="E-mail"
-            inputGroup={{ marginTop: 5 }}
-          />
+          <Wrap spacing={4}>
+            <Input name="name" type="text" placeholder="Digite seu nome" />
+            <Input name="email" type="text" placeholder="E-mail" />
+          </Wrap>
           <VStack spacing={10}>
             <ButtonGroup
               zIndex={1}
