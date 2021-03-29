@@ -34,7 +34,6 @@ export default function Input({ ...rest }: InputProps): JSX.Element {
         children={icons[rest.name]}
       />
       <ChakraInput
-        layerStyle="input"
         bg="black.50"
         size="lg"
         paddingLeft={16}

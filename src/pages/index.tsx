@@ -25,19 +25,19 @@ export default function Subscribe(): JSX.Element {
           w="100%"
           marginRight="4.74rem"
         >
-          <Box>
+          <Box mb="2rem">
             <Image src="/images/nlw-logo.svg" height={20} alt="Nlw Logo" />
           </Box>
           <Text
             textStyle="h1"
-            color="white.50"
+            color="white.100"
             marginTop="1.72rem"
             lineHeight="5.75rem"
           >
             Avance para <br /> o próximo nível
             <span style={{ color: '#04e168' }}>.</span>
           </Text>
-          <Text textStyle="h3" color="white.50">
+          <Text textStyle="h3" color="white.100" mt="1.25rem">
             Um evento para dar o próximo passo na sua evolução como programadora
             ou programador.
           </Text>
