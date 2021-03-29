@@ -8,7 +8,7 @@ import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import { ReactNode } from 'react';
 
 import customTheme from '../styles/theme';
-import Fonts from '../styles/Fonts';
+import Global from '../styles/Global';
 
 interface Props {
   children: ReactNode;
@@ -17,7 +17,7 @@ interface Props {
 export default function ThemeContainer({ children }: Props): JSX.Element {
   return (
     <ChakraThemeProvider theme={customTheme}>
-      <Fonts />
+      <Global />
       <ColorModeProvider
         options={{ initialColorMode: 'dark', useSystemColorMode: true }}
         value="dark"

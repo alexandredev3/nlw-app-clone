@@ -80,6 +80,9 @@ const customTheme = extendTheme({
       800: '#004c20',
       900: '#001b07',
     },
+    blue: {
+      50: '#2AC7E3',
+    },
   },
 });
 

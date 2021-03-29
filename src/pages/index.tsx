@@ -45,8 +45,8 @@ export default function Subscribe(): JSX.Element {
             justifyContent="space-between"
             alignItems="center"
             fontSize="xl"
+            color="white.100"
             fontWeight="bold"
-            color="grey.50"
             marginTop="6.25rem"
           >
             <Flex alignItems="center">
@@ -127,9 +127,7 @@ export default function Subscribe(): JSX.Element {
                 _active={null}
                 _focus={null}
               >
-                <Text fontSize="1.24rem" color="white.50">
-                  QUERO ME INSCREVER
-                </Text>
+                <Text fontSize="1.24rem">QUERO ME INSCREVER</Text>
               </Button>
             </ButtonGroup>
 
