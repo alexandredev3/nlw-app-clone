@@ -26,15 +26,13 @@ export default function Technology({
         borderRadius="md"
         position="relative"
         transition="border 240ms"
+        border="1px solid transparent"
         _hover={{
           border: `1px solid ${techColor}`,
         }}
       >
         <Image
           w="92px"
-          p="1rem 0.75rem"
-          borderRadius="md"
-          bgColor="blue.50"
           src={techIcon}
           position="absolute"
           transform="translateY(-50%)"

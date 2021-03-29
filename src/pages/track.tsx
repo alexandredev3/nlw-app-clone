@@ -31,7 +31,7 @@ export default function Track(): JSX.Element {
         <GridItem>
           <Technology
             techName="ReactJS"
-            techIcon="/icons/react-tech.svg"
+            techIcon="/assets/icons/icon-react.png"
             techColor="#2AC7E3"
             techType="Front-end"
             description="Se o seu objetivo está alinhado
@@ -45,7 +45,7 @@ export default function Track(): JSX.Element {
         <GridItem>
           <Technology
             techName="ReactJS"
-            techIcon="/icons/react-tech.svg"
+            techIcon="/assets/icons/icon-node.png"
             techColor="#2AC7E3"
             techType="Front-end"
             description="Se o seu objetivo está alinhado
@@ -59,7 +59,7 @@ export default function Track(): JSX.Element {
         <GridItem>
           <Technology
             techName="ReactJS"
-            techIcon="/icons/react-tech.svg"
+            techIcon="/assets/icons/icon-elixir.png"
             techColor="#2AC7E3"
             techType="Front-end"
             description="Se o seu objetivo está alinhado
@@ -73,7 +73,7 @@ export default function Track(): JSX.Element {
         <GridItem>
           <Technology
             techName="ReactJS"
-            techIcon="/icons/react-tech.svg"
+            techIcon="/assets/icons/icon-react.png"
             techColor="#2AC7E3"
             techType="Front-end"
             description="Se o seu objetivo está alinhado
@@ -87,7 +87,7 @@ export default function Track(): JSX.Element {
         <GridItem>
           <Technology
             techName="ReactJS"
-            techIcon="/icons/react-tech.svg"
+            techIcon="/assets/icons/icon-flutter.png"
             techColor="#2AC7E3"
             techType="Front-end"
             description="Se o seu objetivo está alinhado

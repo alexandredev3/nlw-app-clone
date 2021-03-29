@@ -26,7 +26,11 @@ export default function Subscribe(): JSX.Element {
           marginRight="4.74rem"
         >
           <Box mb="2rem">
-            <Image src="/images/nlw-logo.svg" height={20} alt="Nlw Logo" />
+            <Image
+              src="/assets/images/nlw-logo.svg"
+              height={20}
+              alt="Nlw Logo"
+            />
           </Box>
           <Text
             textStyle="h1"
@@ -50,21 +54,21 @@ export default function Subscribe(): JSX.Element {
             marginTop="6.25rem"
           >
             <Flex alignItems="center">
-              <Image src="/icons/data-icon.svg" />
+              <Image src="/assets/icons/data-icon.svg" />
               <Text marginLeft="1rem">
                 <span style={{ color: '#04D361' }}>19 a 25</span> <br /> de
                 Abril
               </Text>
             </Flex>
             <Flex alignItems="center">
-              <Image src="/icons/free-and-online-icon.svg" />
+              <Image src="/assets/icons/free-and-online-icon.svg" />
               <Text marginLeft="1rem">
                 <span style={{ color: '#04D361' }}>100%</span> online <br /> e
                 gratuito
               </Text>
             </Flex>
             <Flex alignItems="center">
-              <Image src="/icons/edition-icon.svg" />
+              <Image src="/assets/icons/edition-icon.svg" />
               <Text marginLeft="1rem">
                 Quinta edição <br /> conteúdo{' '}
                 <span style={{ color: '#04D361' }}>inédito</span>
@@ -158,13 +162,13 @@ export default function Subscribe(): JSX.Element {
             flex={1}
           >
             <Flex>
-              <Image src="icons/secure-icon.svg" />
+              <Image src="/assets/icons/secure-icon.svg" />
               <Text marginLeft="1.25rem" color="grey.100">
                 Suas informações <br /> estão seguras
               </Text>
             </Flex>
             <Flex>
-              <Image src="icons/block-icon.svg" />
+              <Image src="/assets/icons/block-icon.svg" />
               <Text marginLeft="1.25rem" color="grey.100">
                 Somos <br /> contra spam
               </Text>

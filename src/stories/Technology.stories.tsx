@@ -2,7 +2,7 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 import Technology from '../components/Technology';
-import reactTechImage from './assets/react-tech.svg';
+import reactTechImage from './assets/icon-react.png';
 
 interface Props {
   techName: string;
