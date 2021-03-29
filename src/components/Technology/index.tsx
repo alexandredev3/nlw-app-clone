@@ -43,11 +43,11 @@ export default function Technology({
           <Text fontSize="2rem">
             Trilha <strong style={{ color: techColor }}>{techName}</strong>
           </Text>
-          <Text fontSize="1.45rem" fontWeight="bold" color="blue.50">
+          <Text fontSize="1.45rem" fontWeight="bold" color={techColor}>
             {techType}
           </Text>
         </Box>
-        <Box color="white.100" fontSize="1.25rem">
+        <Box color="white.100" fontSize="1.25rem" height="198px">
           <Text>{description}</Text>
         </Box>
         <Button

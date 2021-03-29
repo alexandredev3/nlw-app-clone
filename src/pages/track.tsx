@@ -44,58 +44,38 @@ export default function Track(): JSX.Element {
         </GridItem>
         <GridItem>
           <Technology
-            techName="ReactJS"
+            techName="NodeJS"
             techIcon="/assets/icons/icon-node.png"
-            techColor="#2AC7E3"
-            techType="Front-end"
-            description="Se o seu objetivo está alinhado
-            com o front-end, e você deseja
-            construir interfaces modernas e
-            reativas na web utilizando uma
-            biblioteca modular e escalável,
-            essa trilha é para você."
+            techColor="#8CC84B"
+            techType="Back-end"
+            description="Se o seu objetivo está alinhado com o back-end, e você deseja construir arquiteturas escaláveis e simples para a web utilizando uma linguagem flexível e popular, essa trilha é para você."
           />
         </GridItem>
         <GridItem>
           <Technology
-            techName="ReactJS"
+            techName="Elixir"
             techIcon="/assets/icons/icon-elixir.png"
-            techColor="#2AC7E3"
-            techType="Front-end"
-            description="Se o seu objetivo está alinhado
-            com o front-end, e você deseja
-            construir interfaces modernas e
-            reativas na web utilizando uma
-            biblioteca modular e escalável,
-            essa trilha é para você."
+            techColor="#A32DDF"
+            techType="Back-end"
+            description="Se o seu objetivo está alinhado com o back-end, e você deseja construir aplicações distribuídas, escaláveis e tolerantes a falhas utilizando programação funcional, essa trilha é para você."
           />
         </GridItem>
         <GridItem>
           <Technology
-            techName="ReactJS"
+            techName="React Native"
             techIcon="/assets/icons/icon-react.png"
             techColor="#2AC7E3"
-            techType="Front-end"
-            description="Se o seu objetivo está alinhado
-            com o front-end, e você deseja
-            construir interfaces modernas e
-            reativas na web utilizando uma
-            biblioteca modular e escalável,
-            essa trilha é para você."
+            techType="Mobile"
+            description="Se o seu objetivo está alinhado com desenvolvimento mobile, e você deseja construir aplicações modernas tanto para iOS quanto para Android de forma nativa, essa trilha é para você."
           />
         </GridItem>
         <GridItem>
           <Technology
-            techName="ReactJS"
+            techName="Flutter"
             techIcon="/assets/icons/icon-flutter.png"
-            techColor="#2AC7E3"
-            techType="Front-end"
-            description="Se o seu objetivo está alinhado
-            com o front-end, e você deseja
-            construir interfaces modernas e
-            reativas na web utilizando uma
-            biblioteca modular e escalável,
-            essa trilha é para você."
+            techColor="#2F80ED"
+            techType="Mobile"
+            description="Se o seu objetivo está alinhado com desenvolvimento mobile e se você deseja construir aplicações compiladas de forma nativa para celular, web e desktop a partir de um único código-base, essa é a trilha para você."
           />
         </GridItem>
       </Grid>
