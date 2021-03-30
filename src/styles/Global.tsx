@@ -22,6 +22,18 @@ const Global = (): JSX.Element => (
       button {
         color: #FFFF;
       }
+
+      ::-webkit-scrollbar {
+        width: 0.4rem;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #121214;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #505058;
+      }
     `}
   />
 );
