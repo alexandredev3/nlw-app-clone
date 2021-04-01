@@ -105,6 +105,7 @@ export default function Ticket({
             <Box>
               <Image width="98px" src={`/assets/icons/${techLogo}.png`} />
               <Text
+                display="block"
                 fontWeight="bold"
                 fontSize="1.25rem"
                 textAlign="center"
