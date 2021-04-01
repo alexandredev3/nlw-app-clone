@@ -59,8 +59,8 @@ const customTheme = extendTheme({
     purple: {
       50: '#8257E5',
       100: '#cebcf8',
-      200: '#ad91ef',
-      300: '#8c64e7',
+      200: '#734BD',
+      300: '#734BD1',
       400: '#6b38df',
       500: '#5220c6',
       600: '#3f189b',

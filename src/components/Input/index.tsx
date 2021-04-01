@@ -26,7 +26,11 @@ export default function Input({ ...rest }: InputProps): JSX.Element {
   }
 
   return (
-    <InputGroup>
+    <InputGroup
+      _notFirst={{
+        marginTop: '1rem',
+      }}
+    >
       <InputLeftElement
         border={0}
         height="68px"

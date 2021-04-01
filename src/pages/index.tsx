@@ -96,10 +96,8 @@ export default function Subscribe(): JSX.Element {
             Inscrição gratuita
           </Heading>
 
-          <Wrap spacing={4}>
-            <Input name="name" type="text" placeholder="Digite seu nome" />
-            <Input name="email" type="text" placeholder="E-mail" />
-          </Wrap>
+          <Input name="name" type="text" placeholder="Digite seu nome" />
+          <Input name="email" type="text" placeholder="E-mail" />
           <VStack spacing={10}>
             <ButtonGroup
               zIndex={1}
