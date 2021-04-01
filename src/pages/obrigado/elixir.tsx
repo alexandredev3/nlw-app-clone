@@ -12,7 +12,7 @@ import {
 import GithubIcon from '../../components/GithubIcon';
 import Ticket from '../../components/Ticket';
 
-export default function ReactTrack(): JSX.Element {
+export default function ElixirTrack(): JSX.Element {
   return (
     <Flex justifyContent="center" alignItems="center" padding="100px">
       <Flex flexDirection="column">
@@ -26,7 +26,7 @@ export default function ReactTrack(): JSX.Element {
           </Flex>
           <Heading maxW="474px" w="100%" fontSize="4rem">
             Bem-vindo(a) à{' '}
-            <span style={{ color: '#2AC7E3' }}>Trilha ReactJS</span>
+            <span style={{ color: '#A32DDF' }}>Trilha Elixir</span>
           </Heading>
           <Text maxW="400px" w="100%" color="grey.100" fontSize="1.75rem">
             Gere seu ticket único com o perfil do GitHub.
@@ -94,10 +94,10 @@ export default function ReactTrack(): JSX.Element {
       </Flex>
       <Flex ml="8rem" align="center">
         <Ticket
-          techLogo="icon-react"
+          techLogo="icon-elixir"
           numberTicket="000000"
-          techName="ReactJS"
-          ticket="react-ticket"
+          techName="Elixir"
+          ticket="elixir-ticket"
           user={{
             name: 'Alexandre Costa',
             username: 'alexandredev3',
