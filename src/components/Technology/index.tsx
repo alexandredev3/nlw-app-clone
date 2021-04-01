@@ -6,7 +6,7 @@ interface Props {
   techIcon: string;
   techType: 'Front-end' | 'Back-end' | 'Mobile';
   description: string;
-  onSubmit: () => void;
+  selectedTech: string;
 }
 
 export default function Technology({
@@ -15,8 +15,12 @@ export default function Technology({
   techIcon,
   techType,
   description,
-  onSubmit,
+  selectedTech,
 }: Props): JSX.Element {
+  async function handleSelectedTech(): Promise<void> {
+    alert(`/obrigado/${selectedTech}`);
+  }
+
   return (
     <Container mb="8rem">
       <Flex
@@ -63,7 +67,7 @@ export default function Technology({
           width="100%"
           height="72px"
           mt="3.24rem"
-          onClick={onSubmit}
+          onClick={handleSelectedTech}
         >
           <Text>CONFIRMAR TRILHA</Text>
         </Button>
