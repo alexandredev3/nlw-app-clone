@@ -23,7 +23,11 @@ export default function Ticket({
 }: Props): JSX.Element {
   return (
     <Box position="relative">
-      <Image maxW="700px" src={`/assets/images/${ticket}.svg`} />
+      {user ? (
+        <Image maxW="700px" src={`/assets/images/${ticket}-filled.svg`} />
+      ) : (
+        <Image maxW="700px" src={`/assets/images/${ticket}.svg`} />
+      )}
       <Flex>
         <Flex
           position="absolute"
