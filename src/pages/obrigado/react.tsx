@@ -93,7 +93,17 @@ export default function ReactTrack(): JSX.Element {
         </ButtonGroup>
       </Flex>
       <Flex ml="8rem" align="center">
-        <Ticket />
+        <Ticket
+          techLogo="icon-elixir"
+          numberTicket="000000"
+          techName="Elixir"
+          ticket="elixir-ticket"
+          user={{
+            name: 'Alexandre Costa',
+            username: 'alexandredev3',
+            avatarURL: 'https://github.com/alexandredev3.png',
+          }}
+        />
       </Flex>
     </Flex>
   );

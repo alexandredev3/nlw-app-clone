@@ -1,11 +1,29 @@
-import { Box, Flex, Image, Text, Container } from '@chakra-ui/react';
+import { Box, Flex, Image, Text } from '@chakra-ui/react';
 
 import GithubIcon from '../GithubIcon';
 
-export default function Ticket(): JSX.Element {
+interface Props {
+  ticket: string;
+  techName: string;
+  techLogo: string;
+  numberTicket: string;
+  user?: {
+    name: string;
+    username: string;
+    avatarURL: string;
+  };
+}
+
+export default function Ticket({
+  ticket,
+  techName,
+  techLogo,
+  numberTicket,
+  user,
+}: Props): JSX.Element {
   return (
     <Box position="relative">
-      <Image maxW="700px" src="/assets/images/ticket.svg" />
+      <Image maxW="700px" src={`/assets/images/${ticket}.svg`} />
       <Flex>
         <Flex
           position="absolute"
@@ -18,15 +36,19 @@ export default function Ticket(): JSX.Element {
         >
           <Flex flexDir="column">
             <Flex alignItems="center">
-              <Image src="/assets/icons/avatar-icon.svg" w="92px" />
+              {user ? (
+                <Image src={user.avatarURL} w="92px" borderRadius="50%" />
+              ) : (
+                <Image src="/assets/icons/avatar-icon.svg" w="92px" />
+              )}
               <Flex flexDir="column" ml="1.25rem">
                 <Text color="white.100" fontSize="1.76rem" fontWeight="bold">
-                  Seu nome
+                  {user ? user.name : 'Seu nome'}
                 </Text>
                 <Flex alignItems="center">
                   <GithubIcon size={24} color="#A8A8B3" />
                   <Text color="grey.100" ml="0.75rem">
-                    Username
+                    {user ? user.username : 'Username'}
                   </Text>
                 </Flex>
               </Flex>
@@ -77,19 +99,19 @@ export default function Ticket(): JSX.Element {
             justifyContent="space-between"
           >
             <Box>
-              <Image width="98px" src="/assets/icons/icon-react.png" />
+              <Image width="98px" src={`/assets/icons/${techLogo}.png`} />
               <Text
                 fontWeight="bold"
                 fontSize="1.25rem"
                 textAlign="center"
                 mt="1.25rem"
               >
-                ReactJS
+                {techName}
               </Text>
             </Box>
             <Box mt="5rem">
               <Text fontSize="1.28rem" fontWeight="bold">
-                0001000
+                {numberTicket}
               </Text>
             </Box>
           </Flex>
