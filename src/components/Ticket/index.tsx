@@ -101,24 +101,21 @@ export default function Ticket({
             top={0}
             alignItems="center"
             justifyContent="space-between"
+            w="15%"
           >
-            <Box>
-              <Image width="98px" src={`/assets/icons/${techLogo}.png`} />
-              <Text
-                display="block"
-                fontWeight="bold"
-                fontSize="1.25rem"
-                textAlign="center"
-                mt="1.25rem"
-              >
-                {techName}
-              </Text>
-            </Box>
-            <Box mt="5rem">
-              <Text fontSize="1.28rem" fontWeight="bold">
-                {numberTicket}
-              </Text>
-            </Box>
+            <Image width="98px" src={`/assets/icons/${techLogo}.png`} />
+            <Text
+              display="block"
+              fontWeight="bold"
+              fontSize="1.25rem"
+              textAlign="center"
+              mt="1.25rem"
+            >
+              {techName}
+            </Text>
+            <Text fontSize="1.28rem" fontWeight="bold" position="absolute" top={235} bottom={0}>
+              {numberTicket}
+            </Text>
           </Flex>
         </Flex>
       </Flex>

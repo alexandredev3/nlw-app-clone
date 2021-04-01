@@ -10,7 +10,24 @@ export default {
 
 const Template: Story<any> = args => <Ticket {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const TicketStory = Template.bind({});
+TicketStory.args = {
+  techLogo: "icon-node",
+  numberTicket: "000000",
+  techName: "NodeJS",
+  ticket: "node-tick  et",
+};
+
+export const TicketFilledStory = Template.bind({});
+TicketFilledStory.args = {
+  techLogo: "icon-node",
+  numberTicket: "000000",
+  techName: "NodeJS",
+  ticket: "node-ticket",
+  user: {
+    name: 'Alexandre Costa',
+    username: 'alexandredev3',
+    avatarURL: 'https://github.com/alexandredev3.png',
+  }
 };
 
