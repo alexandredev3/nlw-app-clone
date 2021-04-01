@@ -1,19 +1,20 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  Text,
-  Center,
-  Grid,
-  GridItem,
-  Container,
-} from '@chakra-ui/react';
+import { Flex, Heading, Text, Grid, GridItem } from '@chakra-ui/react';
 
 import Technology from '../components/Technology';
 
 export default function Track(): JSX.Element {
+  function handleSubmit(techName: string) {
+    alert(`${techName} Olá!`);
+  }
+
   return (
-    <Flex flexDirection="column" maxW="1280px" w="100%" margin="0 auto">
+    <Flex
+      as="header"
+      flexDirection="column"
+      maxW="1280px"
+      w="100%"
+      margin="0 auto"
+    >
       <Flex alignItems="center" mt="4.75rem" mb="8rem">
         <Heading fontSize="2.74rem" mr="3.75rem">
           Trilhas <br /> disponíveis
@@ -27,7 +28,7 @@ export default function Track(): JSX.Element {
           que vai te impedir de alcançar seus objetivos.
         </Text>
       </Flex>
-      <Grid templateColumns="repeat(3, 1fr)">
+      <Grid as="section" templateColumns="repeat(3, 1fr)">
         <GridItem>
           <Technology
             techName="ReactJS"
@@ -40,6 +41,7 @@ export default function Track(): JSX.Element {
             reativas na web utilizando uma
             biblioteca modular e escalável,
             essa trilha é para você."
+            onSubmit={() => handleSubmit('ReactJS')}
           />
         </GridItem>
         <GridItem>
@@ -49,6 +51,7 @@ export default function Track(): JSX.Element {
             techColor="#8CC84B"
             techType="Back-end"
             description="Se o seu objetivo está alinhado com o back-end, e você deseja construir arquiteturas escaláveis e simples para a web utilizando uma linguagem flexível e popular, essa trilha é para você."
+            onSubmit={() => handleSubmit('NodeJS')}
           />
         </GridItem>
         <GridItem>
@@ -58,6 +61,7 @@ export default function Track(): JSX.Element {
             techColor="#A32DDF"
             techType="Back-end"
             description="Se o seu objetivo está alinhado com o back-end, e você deseja construir aplicações distribuídas, escaláveis e tolerantes a falhas utilizando programação funcional, essa trilha é para você."
+            onSubmit={() => handleSubmit('Elixir')}
           />
         </GridItem>
         <GridItem>
@@ -67,6 +71,7 @@ export default function Track(): JSX.Element {
             techColor="#2AC7E3"
             techType="Mobile"
             description="Se o seu objetivo está alinhado com desenvolvimento mobile, e você deseja construir aplicações modernas tanto para iOS quanto para Android de forma nativa, essa trilha é para você."
+            onSubmit={() => handleSubmit('React Native')}
           />
         </GridItem>
         <GridItem>
@@ -76,6 +81,7 @@ export default function Track(): JSX.Element {
             techColor="#2F80ED"
             techType="Mobile"
             description="Se o seu objetivo está alinhado com desenvolvimento mobile e se você deseja construir aplicações compiladas de forma nativa para celular, web e desktop a partir de um único código-base, essa é a trilha para você."
+            onSubmit={() => handleSubmit('Flutter')}
           />
         </GridItem>
       </Grid>

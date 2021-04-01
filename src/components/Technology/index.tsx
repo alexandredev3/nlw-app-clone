@@ -6,6 +6,7 @@ interface Props {
   techIcon: string;
   techType: 'Front-end' | 'Back-end' | 'Mobile';
   description: string;
+  onSubmit: () => void;
 }
 
 export default function Technology({
@@ -14,6 +15,7 @@ export default function Technology({
   techIcon,
   techType,
   description,
+  onSubmit,
 }: Props): JSX.Element {
   return (
     <Container mb="8rem">
@@ -61,6 +63,7 @@ export default function Technology({
           width="100%"
           height="72px"
           mt="3.24rem"
+          onClick={onSubmit}
         >
           <Text>CONFIRMAR TRILHA</Text>
         </Button>

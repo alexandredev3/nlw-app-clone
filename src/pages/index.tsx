@@ -109,6 +109,7 @@ export default function Subscribe(): JSX.Element {
               marginTop={7}
             >
               <Button
+                as="button"
                 type="submit"
                 bg="purple.300"
                 variant="solid"
