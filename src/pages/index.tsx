@@ -10,7 +10,6 @@ import {
   StackDivider,
   Center,
   Heading,
-  Wrap,
 } from '@chakra-ui/react';
 
 import Input from '../components/Input';
@@ -25,23 +24,24 @@ export default function Subscribe(): JSX.Element {
           w="100%"
           marginRight="4.74rem"
         >
-          <Box mb="2rem">
-            <Image
-              src="/assets/images/nlw-logo.svg"
-              height={20}
-              alt="Nlw Logo"
-            />
-          </Box>
+          <Image
+            src="/assets/images/nlw-logo.svg"
+            width="320px"
+            alt="Nlw Logo"
+            mb="3rem"
+          />
           <Text
-            textStyle="h1"
-            color="white.100"
+            as="h1"
+            fontWeight="bold"
+            color="grey.50"
+            fontSize="6rem"
             marginTop="1.72rem"
             lineHeight="5.75rem"
           >
             Avance para <br /> o próximo nível
             <span style={{ color: '#04e168' }}>.</span>
           </Text>
-          <Text textStyle="h3" color="white.100" mt="1.25rem">
+          <Text color="grey.50" fontSize="2rem" mt="1.75rem">
             Um evento para dar o próximo passo na sua evolução como programadora
             ou programador.
           </Text>
@@ -51,7 +51,7 @@ export default function Subscribe(): JSX.Element {
             fontSize="xl"
             color="white.100"
             fontWeight="bold"
-            marginTop="6.25rem"
+            marginTop="5rem"
           >
             <Flex alignItems="center">
               <Image src="/assets/icons/data-icon.svg" />
@@ -79,25 +79,41 @@ export default function Subscribe(): JSX.Element {
         <Flex
           as="form"
           flexDirection="column"
-          maxW="568px"
+          maxW="600px"
           width="100%"
-          height="586px"
-          padding="1.75rem 2.25rem"
+          height="626px"
+          padding="2.75rem 2.75rem"
           bg="black.100"
           borderRadius="md"
         >
           <Heading
             textAlign="center"
-            color="white"
+            color="grey.50"
             fontWeight="bold"
-            fontSize="3xl"
+            fontSize="2.25rem"
             marginBottom={8}
           >
             Inscrição gratuita
           </Heading>
 
-          <Input name="name" type="text" placeholder="Digite seu nome" />
-          <Input name="email" type="text" placeholder="E-mail" />
+          <Input
+            name="name"
+            type="text"
+            placeholder="Digite seu nome"
+            height="80px"
+            _placeholder={{
+              fontSize: '1.52rem',
+            }}
+          />
+          <Input
+            name="email"
+            type="text"
+            placeholder="E-mail"
+            height="80px"
+            _placeholder={{
+              fontSize: '1.52rem',
+            }}
+          />
           <VStack spacing={10}>
             <ButtonGroup
               zIndex={1}
@@ -141,11 +157,11 @@ export default function Subscribe(): JSX.Element {
               borderColor="grey.300"
               colorScheme="green"
             >
-              <Text fontSize="1rem">Concordo em receber comunicações</Text>
+              <Text fontSize="1.25rem">Concordo em receber comunicações</Text>
             </Checkbox>
             <Center>
               <StackDivider
-                minW="568px"
+                minW="600px"
                 w="100%"
                 borderBottomWidth="2px"
                 borderBottomColor="grey.300"
@@ -154,10 +170,9 @@ export default function Subscribe(): JSX.Element {
           </VStack>
           <Flex
             margin="0 2.25rem"
-            marginTop={6}
+            marginTop="2rem"
             justifyContent="space-between"
             alignItems="center"
-            lineHeight="18px"
             flex={1}
           >
             <Flex>

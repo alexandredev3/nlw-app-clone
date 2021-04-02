@@ -29,18 +29,7 @@ const customTheme = extendTheme({
       height: '100vh',
     },
   },
-  textStyles: {
-    h1: {
-      fontWeight: 'bold',
-      color: 'grey.100',
-      fontSize: 74,
-    },
-    h3: {
-      fontWeight: 'medium',
-      color: 'grey.100',
-      fontSize: 28,
-    },
-  },
+
   colors: {
     white: {
       50: '#ffff',
@@ -60,7 +49,7 @@ const customTheme = extendTheme({
       50: '#8257E5',
       100: '#cebcf8',
       200: '#734BD',
-      300: '#734BD1',
+      300: '#8257E5',
       400: '#6b38df',
       500: '#A32DDF',
       600: '#3f189b',

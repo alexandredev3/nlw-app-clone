@@ -3,6 +3,7 @@ import {
   Input as ChakraInput,
   InputProps,
   InputLeftElement,
+  Flex,
 } from '@chakra-ui/react';
 
 import { useState } from 'react';
@@ -32,19 +33,18 @@ export default function Input({ ...rest }: InputProps): JSX.Element {
       }}
     >
       <InputLeftElement
-        border={0}
-        height="68px"
-        marginLeft={3}
+        height={rest.height}
+        marginLeft={5}
+        textAlign="center"
         children={icons[rest.name]}
       />
       <ChakraInput
         bg="black.50"
         size="lg"
-        paddingLeft={16}
+        paddingLeft="4.5rem"
         focusBorderColor="purple.50"
         variant="filled"
         backgroundColor="black.800"
-        height="68px"
         color="white.50"
         _hover={null}
         _focus={{
