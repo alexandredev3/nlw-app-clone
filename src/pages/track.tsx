@@ -37,7 +37,7 @@ export default function Track(): JSX.Element {
             reativas na web utilizando uma
             biblioteca modular e escalável,
             essa trilha é para você."
-            selectedTech="react"
+            selectedTechPathToRedirect="react"
           />
         </GridItem>
         <GridItem>
@@ -47,7 +47,7 @@ export default function Track(): JSX.Element {
             techColor="#8CC84B"
             techType="Back-end"
             description="Se o seu objetivo está alinhado com o back-end, e você deseja construir arquiteturas escaláveis e simples para a web utilizando uma linguagem flexível e popular, essa trilha é para você."
-            selectedTech="node"
+            selectedTechPathToRedirect="node"
           />
         </GridItem>
         <GridItem>
@@ -57,7 +57,7 @@ export default function Track(): JSX.Element {
             techColor="#A32DDF"
             techType="Back-end"
             description="Se o seu objetivo está alinhado com o back-end, e você deseja construir aplicações distribuídas, escaláveis e tolerantes a falhas utilizando programação funcional, essa trilha é para você."
-            selectedTech="elixir"
+            selectedTechPathToRedirect="elixir"
           />
         </GridItem>
         <GridItem>
@@ -67,7 +67,7 @@ export default function Track(): JSX.Element {
             techColor="#2AC7E3"
             techType="Mobile"
             description="Se o seu objetivo está alinhado com desenvolvimento mobile, e você deseja construir aplicações modernas tanto para iOS quanto para Android de forma nativa, essa trilha é para você."
-            selectedTech="reactnative"
+            selectedTechPathToRedirect="reactnative"
           />
         </GridItem>
         <GridItem>
@@ -77,7 +77,7 @@ export default function Track(): JSX.Element {
             techColor="#2F80ED"
             techType="Mobile"
             description="Se o seu objetivo está alinhado com desenvolvimento mobile e se você deseja construir aplicações compiladas de forma nativa para celular, web e desktop a partir de um único código-base, essa é a trilha para você."
-            selectedTech="flutter"
+            selectedTechPathToRedirect="flutter"
           />
         </GridItem>
       </Grid>

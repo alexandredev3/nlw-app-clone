@@ -113,7 +113,13 @@ export default function Ticket({
             >
               {techName}
             </Text>
-            <Text fontSize="1.28rem" fontWeight="bold" position="absolute" top={235} bottom={0}>
+            <Text
+              fontSize="1.28rem"
+              fontWeight="bold"
+              position="absolute"
+              top={235}
+              bottom={0}
+            >
               {numberTicket}
             </Text>
           </Flex>

@@ -6,7 +6,7 @@ interface Props {
   techIcon: string;
   techType: 'Front-end' | 'Back-end' | 'Mobile';
   description: string;
-  selectedTech: string;
+  selectedTechPathToRedirect: string;
 }
 
 export default function Technology({
@@ -15,10 +15,10 @@ export default function Technology({
   techIcon,
   techType,
   description,
-  selectedTech,
+  selectedTechPathToRedirect,
 }: Props): JSX.Element {
   async function handleSelectedTech(): Promise<void> {
-    alert(`/obrigado/${selectedTech}`);
+    alert(`/obrigado/${selectedTechPathToRedirect}`);
   }
 
   return (
