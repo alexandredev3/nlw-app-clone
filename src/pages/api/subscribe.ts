@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import subscription from './_lib/subscription';
+import { signToken } from './_lib/jwt';
 
 export default async (
   request: NextApiRequest,
@@ -10,13 +11,20 @@ export default async (
     const { name, email } = request.body;
 
     try {
-      await subscription(name, email);
+      const user = await subscription(name, email);
 
-      return response.status(204).end();
+      const token = signToken({
+        id: user.ref.id,
+      });
+
+      return response.status(200).json({
+        user: user.data,
+        token,
+      });
     } catch (error) {
       console.error(error);
 
-      return response.status(error.requestResult.statusCode).end(error.message);
+      return response.status(500).end(error.message);
     }
   }
 
