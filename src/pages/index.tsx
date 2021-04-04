@@ -11,14 +11,52 @@ import {
   Heading,
   FormControl,
   Box,
+  FormErrorMessage,
+  FormErrorIcon,
 } from '@chakra-ui/react';
-import { Formik, Field, Form, FormikProps } from 'formik';
+import { Formik, Field, Form, FormikProps, FormikHelpers } from 'formik';
+import * as Yup from 'yup';
 
 import Input from '../components/Input';
 
 import api from '../services/axios';
 
+const SubscribeSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(3, 'Campo nome deve ter pelo menos 3 caracteres')
+    .max(40, 'Campo nome precisa ter menos de 40 caracteres')
+    .required('Campo nome é obrigatório'),
+  email: Yup.string()
+    .email('Digite um E-mail valido')
+    .required('Campo E-mail é obrigatório'),
+  acceptTerms: Yup.boolean().isTrue(
+    'Você precisa concordar para concluir sua inscrição'
+  ),
+});
+
+interface ISubscribeData {
+  name: string;
+  email: string;
+  acceptTerms: boolean;
+}
+
 export default function Subscribe(): JSX.Element {
+  async function handleSubmit(
+    data: ISubscribeData,
+    actions: FormikHelpers<any>
+  ): Promise<void> {
+    const { name, email } = data;
+
+    console.log(data);
+
+    try {
+      await api.post('/subscribe', { name, email });
+      actions.setSubmitting(false);
+    } catch (error) {
+      actions.setSubmitting(false);
+    }
+  }
+
   return (
     <Flex layerStyle="base" flexDirection="row" justifyContent="space-evenly">
       <Center>
@@ -81,15 +119,11 @@ export default function Subscribe(): JSX.Element {
           </Flex>
         </Flex>
         <Formik
-          onSubmit={async (values, actions) => {
-            try {
-              await api.post('/subscribe', values);
-              actions.setSubmitting(false);
-            } catch (error) {
-              actions.setSubmitting(false);
-            }
-          }}
-          initialValues={{ name: '', email: '' }}
+          onSubmit={async (values: ISubscribeData, actions) =>
+            handleSubmit(values, actions)
+          }
+          initialValues={{ name: '', email: '', acceptTerms: false }}
+          validationSchema={SubscribeSchema}
         >
           {(props: FormikProps<any>) => (
             <Form>
@@ -97,7 +131,7 @@ export default function Subscribe(): JSX.Element {
                 flexDirection="column"
                 maxW="600px"
                 width="100%"
-                height="626px"
+                height="100%"
                 padding="2.75rem 2.75rem"
                 bg="black.100"
                 borderRadius="md"
@@ -113,12 +147,13 @@ export default function Subscribe(): JSX.Element {
                 </Heading>
 
                 <Box>
-                  <Field name="name">
-                    {({ field }) => (
-                      <FormControl>
+                  <Field name="name" validate={SubscribeSchema}>
+                    {({ field, form }) => (
+                      <FormControl isInvalid={form.errors.name}>
                         <Input
                           name={field.name}
                           type="text"
+                          id="name"
                           placeholder="Digite seu nome"
                           height="80px"
                           _placeholder={{
@@ -127,14 +162,17 @@ export default function Subscribe(): JSX.Element {
                           value={field.value}
                           onChange={field.onChange}
                         />
+                        <FormErrorMessage fontSize="1.25rem">
+                          {form.errors.name}
+                        </FormErrorMessage>
                       </FormControl>
                     )}
                   </Field>
                 </Box>
                 <Box mt="1rem">
                   <Field name="email">
-                    {({ field }) => (
-                      <FormControl>
+                    {({ field, form }) => (
+                      <FormControl isInvalid={form.errors.email}>
                         <Input
                           name={field.name}
                           type="text"
@@ -146,6 +184,9 @@ export default function Subscribe(): JSX.Element {
                           value={field.value}
                           onChange={field.onChange}
                         />
+                        <FormErrorMessage fontSize="1.25rem">
+                          {form.errors.email}
+                        </FormErrorMessage>
                       </FormControl>
                     )}
                   </Field>
@@ -179,25 +220,53 @@ export default function Subscribe(): JSX.Element {
                         borderRadius: 'md',
                         zIndex: -1,
                       }}
+                      _loading={{
+                        opacity: 1,
+                        fontSize: '1.25rem',
+                      }}
                       _hover={null}
-                      _active={null}
+                      _active={{
+                        top: '8px',
+                        _before: {
+                          top: '0px',
+                        },
+                      }}
                       _focus={null}
                     >
                       <Text fontSize="1.24rem">QUERO ME INSCREVER</Text>
                     </Button>
                   </ButtonGroup>
 
-                  <Checkbox
-                    color="grey.100"
-                    spacing={3}
-                    size="lg"
-                    borderColor="grey.300"
-                    colorScheme="green"
+                  <Flex
+                    flexDir="column"
+                    alignItems="center"
+                    justifyContent="center"
                   >
-                    <Text fontSize="1.25rem">
-                      Concordo em receber comunicações
-                    </Text>
-                  </Checkbox>
+                    <Field name="acceptTerms">
+                      {({ field, form }) => (
+                        <FormControl isInvalid={form.errors.acceptTerms}>
+                          <Checkbox
+                            name={field.name}
+                            color="grey.100"
+                            spacing={3}
+                            size="lg"
+                            borderColor="grey.300"
+                            colorScheme="green"
+                            value={field.value}
+                            onChange={field.onChange}
+                          >
+                            <Text fontSize="1.25rem">
+                              Concordo em receber comunicações
+                            </Text>
+                          </Checkbox>
+                          <FormErrorMessage fontSize="1.25rem">
+                            {form.errors.acceptTerms}
+                          </FormErrorMessage>
+                        </FormControl>
+                      )}
+                    </Field>
+                  </Flex>
+
                   <Center>
                     <StackDivider
                       minW="600px"
