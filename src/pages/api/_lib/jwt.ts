@@ -15,15 +15,6 @@ function extractToken(request: NextApiRequest): string {
   return token;
 }
 
-export function signToken(payload: IPayload): string {
-  const token = jwt.sign({ id: payload.id }, PRIVATE_KEY, {
-    algorithm: 'RS256',
-    expiresIn: '1d',
-  });
-
-  return token;
-}
-
 const verifyToken = (token: string): Promise<IPayload> =>
   new Promise((resolve, reject) => {
     const data = jwt.verify(token, PUBLIC_KEY, (error, decoded) => {
@@ -36,6 +27,15 @@ const verifyToken = (token: string): Promise<IPayload> =>
 
     return resolve((data as unknown) as IPayload);
   });
+
+export function signToken(payload: IPayload): string {
+  const token = jwt.sign({ id: payload.id }, PRIVATE_KEY, {
+    algorithm: 'RS256',
+    expiresIn: '1d',
+  });
+
+  return token;
+}
 
 export const ensureAuthenticate = (
   fn: (request: NextApiRequest, response: NextApiResponse) => void
