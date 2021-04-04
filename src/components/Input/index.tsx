@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   InputGroup,
   Input as ChakraInput,
@@ -6,7 +7,6 @@ import {
   Flex,
 } from '@chakra-ui/react';
 
-import { useState } from 'react';
 import NameIcon from '../NameIcon';
 import EmailIcon from '../EmailIcon';
 
