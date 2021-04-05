@@ -1,11 +1,18 @@
 import { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
 
+import { useEffect } from 'react';
 import ThemeContainer from '../hooks/ThemeContext';
+import { SubscribeProvider } from '../hooks/SubscribeContext';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+  const router = useRouter();
+
   return (
     <ThemeContainer>
-      <Component {...pageProps} />
+      <SubscribeProvider>
+        <Component {...pageProps} />
+      </SubscribeProvider>
     </ThemeContainer>
   );
 }

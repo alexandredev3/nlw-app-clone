@@ -12,14 +12,13 @@ import {
   FormControl,
   Box,
   FormErrorMessage,
-  FormErrorIcon,
 } from '@chakra-ui/react';
 import { Formik, Field, Form, FormikProps, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
+import { useRouter } from 'next/router';
 
 import Input from '../components/Input';
-
-import api from '../services/axios';
+import { useSubscribe } from '../hooks/SubscribeContext';
 
 const SubscribeSchema = Yup.object().shape({
   name: Yup.string()
@@ -41,17 +40,18 @@ interface ISubscribeData {
 }
 
 export default function Subscribe(): JSX.Element {
+  const { push } = useRouter();
+  const { subscribe } = useSubscribe();
+
   async function handleSubmit(
     data: ISubscribeData,
     actions: FormikHelpers<any>
   ): Promise<void> {
     const { name, email } = data;
-
-    console.log(data);
-
     try {
-      await api.post('/subscribe', { name, email });
+      await subscribe(name, email);
       actions.setSubmitting(false);
+      push('/track');
     } catch (error) {
       actions.setSubmitting(false);
     }

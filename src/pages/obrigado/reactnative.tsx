@@ -11,8 +11,9 @@ import {
 
 import GithubIcon from '../../components/GithubIcon';
 import Ticket from '../../components/Ticket';
+import withSubscription from '../../components/withSubscription';
 
-export default function ReactNativeTrack(): JSX.Element {
+function ReactNativeTrack(): JSX.Element {
   return (
     <Flex justifyContent="center" alignItems="center" padding="100px">
       <Flex flexDirection="column">
@@ -108,3 +109,5 @@ export default function ReactNativeTrack(): JSX.Element {
     </Flex>
   );
 }
+
+export default withSubscription(ReactNativeTrack);

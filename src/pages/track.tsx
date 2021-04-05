@@ -1,8 +1,14 @@
 import { Flex, Heading, Text, Grid, GridItem } from '@chakra-ui/react';
 
 import Technology from '../components/Technology';
+import withSubscription from '../components/withSubscription';
+import { useSubscribe } from '../hooks/SubscribeContext';
 
-export default function Track(): JSX.Element {
+function Track(): JSX.Element {
+  const { userData } = useSubscribe();
+
+  console.log(userData);
+
   return (
     <Flex
       as="header"
@@ -84,3 +90,5 @@ export default function Track(): JSX.Element {
     </Flex>
   );
 }
+
+export default withSubscription(Track);
