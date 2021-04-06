@@ -3,7 +3,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { ensureAuthenticate } from './_lib/jwt';
 import trackManager from './_lib/trackManager';
 
-// Apenas para teste
+const tracksAvailable = ['react', 'node', 'elixir', 'reactnative', 'flutter'];
+
 async function track(
   request: NextApiRequest,
   response: NextApiResponse
@@ -12,6 +13,10 @@ async function track(
     try {
       const { userRef } = request;
       const { tech } = request.body;
+
+      if (!tracksAvailable.includes(tech)) {
+        return response.status(400).end('this track is not available');
+      }
 
       const trackSelected = await trackManager(tech, userRef);
 
