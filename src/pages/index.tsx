@@ -51,7 +51,6 @@ export default function Subscribe(): JSX.Element {
     try {
       await subscribe(name, email);
       actions.setSubmitting(false);
-      push('/track');
     } catch (error) {
       actions.setSubmitting(false);
     }

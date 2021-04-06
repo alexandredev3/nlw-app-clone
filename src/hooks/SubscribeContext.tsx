@@ -6,6 +6,7 @@ import {
   useState,
   useEffect,
 } from 'react';
+import { useRouter } from 'next/router';
 
 import api from '../services/axios';
 
@@ -30,6 +31,7 @@ export function SubscribeProvider({
   children,
 }: ISubscribeProviderProps): JSX.Element {
   const [userData, setUserData] = useState<IUserData | null>(null);
+  const { push } = useRouter();
 
   useEffect(() => {
     const sessionToken = sessionStorage.getItem('session-token');
@@ -39,7 +41,6 @@ export function SubscribeProvider({
 
       setUserData(sessionToken);
     }
-    console.log('useEffect Subscribe');
   }, []);
 
   async function subscribe(
@@ -52,6 +53,8 @@ export function SubscribeProvider({
 
       api.defaults.headers.Authorization = `Bearer ${token}`;
       sessionStorage.setItem('session-token', String(token));
+      push('/track');
+
       return setUserData(token);
     } catch (error) {
       return (
