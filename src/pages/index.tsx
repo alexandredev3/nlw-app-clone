@@ -15,7 +15,6 @@ import {
 } from '@chakra-ui/react';
 import { Formik, Field, Form, FormikProps, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
 
 import Input from '../components/Input';
 import { useSubscribe } from '../hooks/SubscribeContext';
@@ -40,7 +39,6 @@ interface ISubscribeData {
 }
 
 export default function Subscribe(): JSX.Element {
-  const { push } = useRouter();
   const { subscribe } = useSubscribe();
 
   async function handleSubmit(

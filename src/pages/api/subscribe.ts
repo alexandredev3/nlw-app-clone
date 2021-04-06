@@ -14,7 +14,7 @@ export default async (
       const user = await subscription(name, email);
 
       const token = signToken({
-        id: user.ref.id,
+        userRef: user.ref.id,
       });
 
       return response.status(200).json({

@@ -1,18 +1,22 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { ensureAuthenticate } from './_lib/jwt';
+import trackManager from './_lib/trackManager';
 
 // Apenas para teste
-async function users(
+async function track(
   request: NextApiRequest,
   response: NextApiResponse
 ): Promise<void> {
-  if (request.method === 'GET') {
+  if (request.method === 'POST') {
     try {
-      const { userId } = request;
+      const { userRef } = request;
+      const { tech } = request.body;
+
+      const trackSelected = await trackManager(tech, userRef);
 
       return response.status(200).json({
-        userId,
+        track: trackSelected.data,
       });
     } catch (error) {
       console.error(error);
@@ -21,8 +25,8 @@ async function users(
     }
   }
 
-  response.setHeader('Allow', 'GET');
+  response.setHeader('Allow', 'POST');
   return response.status(405).end('Method not allowed');
 }
 
-export default ensureAuthenticate(users);
+export default ensureAuthenticate(track);

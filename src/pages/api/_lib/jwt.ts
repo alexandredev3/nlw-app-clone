@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import jwt from 'jsonwebtoken';
 
 type IPayload = {
-  id: string;
+  userRef: string;
 };
 
 const { PUBLIC_KEY, PRIVATE_KEY } = process.env;
@@ -29,7 +29,7 @@ const verifyToken = (token: string): Promise<IPayload> =>
   });
 
 export function signToken(payload: IPayload): string {
-  const token = jwt.sign({ id: payload.id }, PRIVATE_KEY, {
+  const token = jwt.sign({ userRef: payload.userRef }, PRIVATE_KEY, {
     algorithm: 'RS256',
     expiresIn: '1d',
   });
@@ -47,9 +47,9 @@ export const ensureAuthenticate = (
 
   verifyToken(token)
     .then(data => {
-      const { id } = data;
+      const { userRef } = data;
 
-      request.userId = id;
+      request.userRef = userRef;
 
       return fn(request, response);
     })
