@@ -2,13 +2,56 @@ import { Flex, Heading, Text, Grid, GridItem } from '@chakra-ui/react';
 
 import Technology from '../components/Technology';
 import withSubscription from '../components/withSubscription';
-import { useSubscribe } from '../hooks/SubscribeContext';
+
+const tracks = [
+  {
+    techName: 'ReactJS',
+    techIcon: 'icon-react',
+    techColor: '#2AC7E3',
+    techType: 'Front-end',
+    description:
+      'Se o seu objetivo está alinhado, com o front-end, e você deseja construir interfaces modernas e reativas na web utilizando uma biblioteca modular e escalável, essa trilha é para você.',
+    selectedTechPathToRedirect: 'react',
+  },
+  {
+    techName: 'NodeJS',
+    techIcon: 'icon-node',
+    techColor: '#8CC84B',
+    techType: 'Back-end',
+    description:
+      'Se o seu objetivo está alinhado com o back-end, e você deseja construir arquiteturas escaláveis e simples para a web utilizando uma linguagem flexível e popular, essa trilha é para você.',
+    selectedTechPathToRedirect: 'node',
+  },
+  {
+    techName: 'Elixir',
+    techIcon: 'icon-elixir',
+    techColor: '#A32DDF',
+    techType: 'Back-end',
+    description:
+      'Se o seu objetivo está alinhado com o back-end, e você deseja construir aplicações distribuídas, escaláveis e tolerantes a falhas utilizando programação funcional, essa trilha é para você.',
+    selectedTechPathToRedirect: 'elixir',
+  },
+  {
+    techName: 'React Native',
+    techIcon: 'icon-react',
+    techColor: '#2AC7E3',
+    techType: 'Mobile',
+    description:
+      'Se o seu objetivo está alinhado com desenvolvimento mobile, e você deseja construir aplicações modernas tanto para iOS quanto para Android de forma nativa, essa trilha é para você.',
+    selectedTechPathToRedirect: 'reactnative',
+  },
+  {
+    techName: 'Flutter',
+    techIcon: 'icon-flutter',
+    techColor: '#2F80ED',
+    techType: 'Mobile',
+    description:
+      'Se o seu objetivo está alinhado com desenvolvimento mobile e se você deseja construir aplicações compiladas de forma nativa para celular, web e desktop a partir de um único código-base, essa é a trilha para você.',
+    selectedTechPathToRedirect: 'flutter',
+  },
+];
 
 function Track(): JSX.Element {
-  const { userData } = useSubscribe();
-
-  console.log(userData);
-
   return (
     <Flex
       as="header"
@@ -31,61 +74,18 @@ function Track(): JSX.Element {
         </Text>
       </Flex>
       <Grid as="section" templateColumns="repeat(3, 1fr)">
-        <GridItem>
-          <Technology
-            techName="ReactJS"
-            techIcon="/assets/icons/icon-react.png"
-            techColor="#2AC7E3"
-            techType="Front-end"
-            description="Se o seu objetivo está alinhado
-            com o front-end, e você deseja
-            construir interfaces modernas e
-            reativas na web utilizando uma
-            biblioteca modular e escalável,
-            essa trilha é para você."
-            selectedTechPathToRedirect="react"
-          />
-        </GridItem>
-        <GridItem>
-          <Technology
-            techName="NodeJS"
-            techIcon="/assets/icons/icon-node.png"
-            techColor="#8CC84B"
-            techType="Back-end"
-            description="Se o seu objetivo está alinhado com o back-end, e você deseja construir arquiteturas escaláveis e simples para a web utilizando uma linguagem flexível e popular, essa trilha é para você."
-            selectedTechPathToRedirect="node"
-          />
-        </GridItem>
-        <GridItem>
-          <Technology
-            techName="Elixir"
-            techIcon="/assets/icons/icon-elixir.png"
-            techColor="#A32DDF"
-            techType="Back-end"
-            description="Se o seu objetivo está alinhado com o back-end, e você deseja construir aplicações distribuídas, escaláveis e tolerantes a falhas utilizando programação funcional, essa trilha é para você."
-            selectedTechPathToRedirect="elixir"
-          />
-        </GridItem>
-        <GridItem>
-          <Technology
-            techName="React Native"
-            techIcon="/assets/icons/icon-react.png"
-            techColor="#2AC7E3"
-            techType="Mobile"
-            description="Se o seu objetivo está alinhado com desenvolvimento mobile, e você deseja construir aplicações modernas tanto para iOS quanto para Android de forma nativa, essa trilha é para você."
-            selectedTechPathToRedirect="reactnative"
-          />
-        </GridItem>
-        <GridItem>
-          <Technology
-            techName="Flutter"
-            techIcon="/assets/icons/icon-flutter.png"
-            techColor="#2F80ED"
-            techType="Mobile"
-            description="Se o seu objetivo está alinhado com desenvolvimento mobile e se você deseja construir aplicações compiladas de forma nativa para celular, web e desktop a partir de um único código-base, essa é a trilha para você."
-            selectedTechPathToRedirect="flutter"
-          />
-        </GridItem>
+        {tracks.map(track => (
+          <GridItem key={track.techName}>
+            <Technology
+              techName={track.techName}
+              techIcon={track.techIcon}
+              techColor={track.techColor}
+              techType={track.techType}
+              description={track.description}
+              selectedTechPathToRedirect={track.selectedTechPathToRedirect}
+            />
+          </GridItem>
+        ))}
       </Grid>
     </Flex>
   );

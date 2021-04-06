@@ -1,10 +1,14 @@
 import { Box, Button, Flex, Image, Text, Container } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+
+import api from '../../services/axios';
 
 interface Props {
   techName: string;
   techColor: string;
   techIcon: string;
-  techType: 'Front-end' | 'Back-end' | 'Mobile';
+  techType: 'Front-end' | 'Back-end' | 'Mobile' | string;
   description: string;
   selectedTechPathToRedirect: string;
 }
@@ -17,8 +21,17 @@ export default function Technology({
   description,
   selectedTechPathToRedirect,
 }: Props): JSX.Element {
+  const { push } = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   async function handleSelectedTech(): Promise<void> {
-    alert(`/obrigado/${selectedTechPathToRedirect}`);
+    setIsSubmitting(true);
+
+    await api.post('/track', {
+      tech: selectedTechPathToRedirect,
+    });
+
+    push(`/obrigado/${selectedTechPathToRedirect}`);
   }
 
   return (
@@ -39,7 +52,7 @@ export default function Technology({
       >
         <Image
           w="92px"
-          src={techIcon}
+          src={`/assets/icons/${techIcon}.png`}
           position="absolute"
           transform="translateY(-50%)"
           top={0}
@@ -58,9 +71,14 @@ export default function Technology({
         </Box>
         <Button
           type="submit"
+          isLoading={isSubmitting}
           bg={techColor}
           variant="solid"
           fontSize="1.1rem"
+          _loading={{
+            opacity: 1,
+            fontSize: '1.25rem',
+          }}
           _hover={{
             filter: 'brightness(1.1)',
           }}

@@ -46,6 +46,10 @@ export default function Input({ ...rest }: InputProps): JSX.Element {
         variant="filled"
         backgroundColor="black.800"
         color="white.50"
+        fontSize="1.52rem"
+        _placeholder={{
+          fontSize: '1.52rem',
+        }}
         _hover={null}
         _focus={{
           bgColor: 'none',

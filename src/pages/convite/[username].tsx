@@ -62,9 +62,6 @@ export default function TicketAccept(): JSX.Element {
           placeholder="Digite seu nome"
           bg="black.100"
           height="80px"
-          _placeholder={{
-            fontSize: '1.52rem',
-          }}
         />
         <Input
           name="email"
@@ -72,9 +69,6 @@ export default function TicketAccept(): JSX.Element {
           placeholder="E-mail"
           bg="black.100"
           height="80px"
-          _placeholder={{
-            fontSize: '1.52rem',
-          }}
         />
         <VStack spacing={2}>
           <ButtonGroup

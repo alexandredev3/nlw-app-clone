@@ -153,9 +153,6 @@ export default function Subscribe(): JSX.Element {
                           id="name"
                           placeholder="Digite seu nome"
                           height="80px"
-                          _placeholder={{
-                            fontSize: '1.52rem',
-                          }}
                           value={field.value}
                           onChange={field.onChange}
                         />
@@ -175,9 +172,6 @@ export default function Subscribe(): JSX.Element {
                           type="text"
                           placeholder="E-mail"
                           height="80px"
-                          _placeholder={{
-                            fontSize: '1.52rem',
-                          }}
                           value={field.value}
                           onChange={field.onChange}
                         />
