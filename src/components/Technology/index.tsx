@@ -24,12 +24,7 @@ export default function Technology({
   const { push } = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { submit } = useTrack({
-    url: '/track',
-    data: {
-      tech: selectedTechPathToRedirect,
-    },
-  });
+  const { submit } = useTrack(selectedTechPathToRedirect);
 
   async function handleSelectedTech(): Promise<void> {
     try {
