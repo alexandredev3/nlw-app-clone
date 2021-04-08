@@ -2,7 +2,7 @@ import { Box, Button, Flex, Image, Text, Container } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import api from '../../services/axios';
+import useTrack from '../../hooks/queries/useTrack';
 
 interface Props {
   techName: string;
@@ -24,14 +24,22 @@ export default function Technology({
   const { push } = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  async function handleSelectedTech(): Promise<void> {
-    setIsSubmitting(true);
-
-    await api.post('/track', {
+  const { submit } = useTrack({
+    url: '/track',
+    data: {
       tech: selectedTechPathToRedirect,
-    });
+    },
+  });
 
-    push(`/obrigado/${selectedTechPathToRedirect}`);
+  async function handleSelectedTech(): Promise<void> {
+    try {
+      setIsSubmitting(true);
+      await submit({ throwOnError: true });
+      push(`/obrigado/${selectedTechPathToRedirect}`);
+    } catch (error) {
+      setIsSubmitting(false);
+      alert(error);
+    }
   }
 
   return (
