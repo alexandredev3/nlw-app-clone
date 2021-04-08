@@ -1,7 +1,5 @@
 import { useQuery } from 'react-query';
-import { useFetch, UseFetchOptions } from '../useFetch';
-
-type UseQueryOptions = UseFetchOptions;
+import { useFetch } from '../useFetch';
 
 const useTrack = (track: string) => {
   const { refetch: submit, ...rest } = useQuery(
