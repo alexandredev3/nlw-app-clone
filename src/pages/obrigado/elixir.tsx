@@ -12,8 +12,11 @@ import {
 import GithubIcon from '../../components/GithubIcon';
 import Ticket from '../../components/Ticket';
 import withSubscription from '../../components/withSubscription';
+import { useAuth } from '../../hooks/AuthContext';
 
 function ElixirTrack(): JSX.Element {
+  const { handleAuth, userData, isSubmitting } = useAuth();
+
   return (
     <Flex justifyContent="center" alignItems="center" padding="100px">
       <Flex flexDirection="column">
@@ -42,7 +45,7 @@ function ElixirTrack(): JSX.Element {
           marginTop="3.25rem"
         >
           <IconButton
-            bg="purple.300"
+            bg="purple.400"
             variant="solid"
             color="white.50"
             width="78px"
@@ -75,6 +78,8 @@ function ElixirTrack(): JSX.Element {
             color="white.50"
             height="76px"
             borderRadius="0px 8px 8px 0px"
+            onClick={handleAuth}
+            isLoading={isSubmitting}
             _before={{
               content: "''",
               width: '100%',
@@ -99,11 +104,7 @@ function ElixirTrack(): JSX.Element {
           numberTicket="000000"
           techName="Elixir"
           ticket="elixir-ticket"
-          user={{
-            name: 'Alexandre Costa',
-            username: 'alexandredev3',
-            avatarURL: 'https://github.com/alexandredev3.png',
-          }}
+          user={userData}
         />
       </Flex>
     </Flex>

@@ -12,8 +12,11 @@ import {
 import GithubIcon from '../../components/GithubIcon';
 import Ticket from '../../components/Ticket';
 import withSubscription from '../../components/withSubscription';
+import { useAuth } from '../../hooks/AuthContext';
 
 function NodeTrack(): JSX.Element {
+  const { handleAuth, userData, isSubmitting } = useAuth();
+
   return (
     <Flex justifyContent="center" alignItems="center" padding="100px">
       <Flex flexDirection="column">
@@ -68,6 +71,8 @@ function NodeTrack(): JSX.Element {
           <Button
             aria-label="button"
             type="submit"
+            isLoading={isSubmitting}
+            onClick={handleAuth}
             maxW="267px"
             w="100%"
             bg="purple.50"
@@ -99,11 +104,7 @@ function NodeTrack(): JSX.Element {
           numberTicket="000000"
           techName="NodeJS"
           ticket="node-ticket"
-          user={{
-            name: 'Alexandre Costa',
-            username: 'alexandredev3',
-            avatarURL: 'https://github.com/alexandredev3.png',
-          }}
+          user={userData}
         />
       </Flex>
     </Flex>

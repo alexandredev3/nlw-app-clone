@@ -12,8 +12,11 @@ import {
 import GithubIcon from '../../components/GithubIcon';
 import Ticket from '../../components/Ticket';
 import withSubscription from '../../components/withSubscription';
+import { useAuth } from '../../hooks/AuthContext';
 
 function ReactNativeTrack(): JSX.Element {
+  const { handleAuth, userData, isSubmitting } = useAuth();
+
   return (
     <Flex justifyContent="center" alignItems="center" padding="100px">
       <Flex flexDirection="column">
@@ -68,6 +71,8 @@ function ReactNativeTrack(): JSX.Element {
           <Button
             aria-label="button"
             type="submit"
+            onSubmit={handleAuth}
+            isLoading={isSubmitting}
             maxW="267px"
             w="100%"
             bg="purple.50"
@@ -99,11 +104,7 @@ function ReactNativeTrack(): JSX.Element {
           numberTicket="000000"
           techName="React Native"
           ticket="react-ticket"
-          user={{
-            name: 'Alexandre Costa',
-            username: 'alexandredev3',
-            avatarURL: 'https://github.com/alexandredev3.png',
-          }}
+          user={userData}
         />
       </Flex>
     </Flex>

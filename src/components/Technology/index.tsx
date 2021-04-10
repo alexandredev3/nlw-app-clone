@@ -24,7 +24,7 @@ export default function Technology({
   const { push } = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { submit } = useTrack(selectedTechPathToRedirect);
+  const { submit, isLoading } = useTrack(selectedTechPathToRedirect);
 
   async function handleSelectedTech(): Promise<void> {
     try {
@@ -75,6 +75,7 @@ export default function Technology({
         <Button
           type="submit"
           isLoading={isSubmitting}
+          disabled={isLoading}
           bg={techColor}
           variant="solid"
           fontSize="1.1rem"

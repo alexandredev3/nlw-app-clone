@@ -12,8 +12,11 @@ import {
 import GithubIcon from '../../components/GithubIcon';
 import Ticket from '../../components/Ticket';
 import withSubscription from '../../components/withSubscription';
+import { useAuth } from '../../hooks/AuthContext';
 
 function ReactTrack(): JSX.Element {
+  const { handleAuth, userData, isSubmitting } = useAuth();
+
   return (
     <Flex justifyContent="center" alignItems="center" padding="100px">
       <Flex flexDirection="column">
@@ -67,6 +70,8 @@ function ReactTrack(): JSX.Element {
           />
           <Button
             aria-label="button"
+            onClick={handleAuth}
+            isLoading={isSubmitting}
             type="submit"
             maxW="267px"
             w="100%"
@@ -99,11 +104,7 @@ function ReactTrack(): JSX.Element {
           numberTicket="000000"
           techName="ReactJS"
           ticket="react-ticket"
-          user={{
-            name: 'Alexandre Costa',
-            username: 'alexandredev3',
-            avatarURL: 'https://github.com/alexandredev3.png',
-          }}
+          user={userData}
         />
       </Flex>
     </Flex>
