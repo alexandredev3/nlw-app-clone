@@ -10,11 +10,13 @@ async function account(
   if (request.method === 'POST') {
     try {
       const { name, username, avatarURL } = request.body;
+      const { userRef } = request;
 
       await saveAccount({
         name,
         avatarURL,
         username,
+        userRef,
       });
 
       return response.status(204).end();

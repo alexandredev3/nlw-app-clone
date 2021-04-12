@@ -24,9 +24,12 @@ export default function Ticket({
   return (
     <Box position="relative">
       {user ? (
-        <Image maxW="700px" src={`/assets/images/${ticket}-filled.svg`} />
+        <Image
+          maxW="700px"
+          src={`/assets/images/${ticket}-ticket-filled.svg`}
+        />
       ) : (
-        <Image maxW="700px" src={`/assets/images/${ticket}.svg`} />
+        <Image maxW="700px" src={`/assets/images/${ticket}-ticket.svg`} />
       )}
       <Flex>
         <Flex

@@ -32,9 +32,9 @@ export default function Technology({
       await submit({ throwOnError: true });
       push(`/obrigado/${selectedTechPathToRedirect}`);
     } catch (error) {
-      setIsSubmitting(false);
       alert(error);
     }
+    setIsSubmitting(false);
   }
 
   return (
@@ -76,6 +76,9 @@ export default function Technology({
           type="submit"
           isLoading={isSubmitting}
           disabled={isLoading}
+          _disabled={{
+            opacity: 0.2,
+          }}
           bg={techColor}
           variant="solid"
           fontSize="1.1rem"

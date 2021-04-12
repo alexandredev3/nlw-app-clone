@@ -10,7 +10,7 @@ export default function NameIcon({
   return (
     <svg
       width={size}
-      height={size}
+      height={size - 1}
       viewBox="0 0 36 35"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

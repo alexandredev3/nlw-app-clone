@@ -6,6 +6,7 @@ type IUserData = {
   name: string;
   username: string;
   avatarURL: string;
+  userRef: string;
 };
 
 type IResponse = {
@@ -16,6 +17,7 @@ export default async function saveAccount({
   name,
   username,
   avatarURL,
+  userRef,
 }: IUserData): Promise<IResponse | null> {
   const account: IResponse = await client.query(
     q.If(
@@ -25,6 +27,7 @@ export default async function saveAccount({
           name,
           username,
           avatarURL,
+          userRef: q.Ref(q.Collection('users'), userRef),
         },
       }),
       null
