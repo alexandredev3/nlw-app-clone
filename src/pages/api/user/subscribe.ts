@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import subscription from './_lib/subscription';
-import { signToken } from './_lib/jwt';
+import subscription from '../_lib/subscription';
+import { signToken } from '../_lib/jwt';
 
 export default async (
   request: NextApiRequest,

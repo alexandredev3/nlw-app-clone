@@ -1,4 +1,5 @@
 import { Box, Flex, Image, Text } from '@chakra-ui/react';
+import tracks from '../../utils/tracks';
 
 import GithubIcon from '../GithubIcon';
 
@@ -14,14 +15,6 @@ interface Props {
     avatarURL: string;
   };
 }
-
-const tracks = {
-  react: 'React',
-  reactnative: 'React Native',
-  node: 'Node',
-  elixir: 'Elixir',
-  flutter: 'Flutter',
-};
 
 export default function Ticket({
   techName,

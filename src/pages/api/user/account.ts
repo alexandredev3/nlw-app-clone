@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import saveAccount from './_lib/saveAccount';
-import { ensureAuthenticate } from './_lib/jwt';
+import saveAccount from '../_lib/saveAccount';
+import { ensureAuthenticate } from '../_lib/jwt';
 
 async function account(
   request: NextApiRequest,

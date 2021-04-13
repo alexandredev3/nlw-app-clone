@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { ensureAuthenticate } from './_lib/jwt';
-import trackManager from './_lib/trackManager';
+import { ensureAuthenticate } from '../_lib/jwt';
+import trackManager from '../_lib/trackManager';
 
 const tracksAvailable = ['react', 'node', 'elixir', 'reactnative', 'flutter'];
 

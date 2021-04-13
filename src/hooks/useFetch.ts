@@ -1,16 +1,18 @@
 import { AxiosRequestConfig } from 'axios';
 import api from '../services/axios';
 
-export type UseFetchOptions = {
+type UseFetchOptions = {
   url: string;
   data?: unknown;
   config?: AxiosRequestConfig;
 };
 
-export const useFetch = async ({
+const useFetch = async ({
   url,
   data,
   config,
 }: UseFetchOptions): Promise<void> => {
   await api.post(url, data, config);
 };
+
+export default useFetch;

@@ -3,34 +3,33 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 import useTrack from '../../hooks/queries/useTrack';
+import tracks from '../../utils/tracks';
 
 interface Props {
   techName: string;
   techColor: string;
-  techIcon: string;
-  techType: 'Front-end' | 'Back-end' | 'Mobile' | string;
-  description: string;
-  selectedTechPathToRedirect: string;
+  techRole: string;
+  techDescription: string;
+  techIcon: JSX.Element;
 }
 
 export default function Technology({
   techName,
   techColor,
-  techIcon,
-  techType,
-  description,
-  selectedTechPathToRedirect,
+  techRole,
+  techDescription,
+  techIcon: TechIcon,
 }: Props): JSX.Element {
   const { push } = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { submit, isLoading } = useTrack(selectedTechPathToRedirect);
+  const { submit, isLoading } = useTrack(techName);
 
   async function handleSelectedTech(): Promise<void> {
     try {
       setIsSubmitting(true);
       await submit({ throwOnError: true });
-      push(`/obrigado/${selectedTechPathToRedirect}`);
+      push(`/obrigado/${techName}`);
     } catch (error) {
       alert(error);
     }
@@ -53,24 +52,18 @@ export default function Technology({
           border: `1px solid ${techColor}`,
         }}
       >
-        <Image
-          w="92px"
-          src={`/assets/icons/${techIcon}.png`}
-          position="absolute"
-          transform="translateY(-50%)"
-          top={0}
-          bottom={0}
-        />
+        {TechIcon}
         <Box color="grey.100" m="3.42rem 0 1.6rem 0">
           <Text fontSize="2rem">
-            Trilha <strong style={{ color: techColor }}>{techName}</strong>
+            Trilha{' '}
+            <strong style={{ color: techColor }}>{tracks[techName]}</strong>
           </Text>
           <Text fontSize="1.45rem" fontWeight="bold" color={techColor}>
-            {techType}
+            {techRole}
           </Text>
         </Box>
         <Box color="white.100" fontSize="1.25rem" height="198px">
-          <Text>{description}</Text>
+          <Text>{techDescription}</Text>
         </Box>
         <Button
           type="submit"

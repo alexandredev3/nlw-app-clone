@@ -1,12 +1,12 @@
 import { useQuery } from 'react-query';
-import { useFetch } from '../useFetch';
+import useFetch from '../useFetch';
 
 const useTrack = (track: string) => {
   const { refetch: submit, ...rest } = useQuery(
     'track',
     () =>
       useFetch({
-        url: '/track',
+        url: '/user/track',
         data: {
           tech: track,
         },

@@ -54,7 +54,7 @@ export function SubscribeProvider({
         return push('/track');
       }
 
-      const response = await api.post('/subscribe', { name, email });
+      const response = await api.post('/user/subscribe', { name, email });
       const { token } = response.data;
 
       api.defaults.headers.Authorization = `Bearer ${token}`;

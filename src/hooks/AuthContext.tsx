@@ -43,7 +43,7 @@ export function AuthProvider({ children }: IAuthProviderProps): JSX.Element {
       const { login: username, name, avatar_url } = response.additionalUserInfo
         .profile as any;
 
-      await api.post('/account', {
+      await api.post('/user/account', {
         username,
         name,
         avatarURL: avatar_url,
