@@ -3,10 +3,11 @@ import { Box, Flex, Image, Text } from '@chakra-ui/react';
 import GithubIcon from '../GithubIcon';
 
 interface Props {
-  ticket: string;
   techName: string;
-  techLogo: string;
-  numberTicket: string;
+  ticketBg: JSX.Element;
+  techImage: JSX.Element;
+  ticketBgWithUser: JSX.Element;
+  ticketNumber: string;
   user?: {
     name: string;
     username: string;
@@ -14,23 +15,25 @@ interface Props {
   };
 }
 
+const tracks = {
+  react: 'React',
+  reactnative: 'React Native',
+  node: 'Node',
+  elixir: 'Elixir',
+  flutter: 'Flutter',
+};
+
 export default function Ticket({
-  ticket,
   techName,
-  techLogo,
-  numberTicket,
+  ticketNumber,
   user,
+  ticketBg: TicketBg,
+  ticketBgWithUser: TicketBgWithUser,
+  techImage: TechImage,
 }: Props): JSX.Element {
   return (
     <Box position="relative">
-      {user ? (
-        <Image
-          maxW="700px"
-          src={`/assets/images/${ticket}-ticket-filled.svg`}
-        />
-      ) : (
-        <Image maxW="700px" src={`/assets/images/${ticket}-ticket.svg`} />
-      )}
+      {user ? TicketBg : TicketBgWithUser}
       <Flex>
         <Flex
           position="absolute"
@@ -106,15 +109,16 @@ export default function Ticket({
             justifyContent="space-between"
             w="15%"
           >
-            <Image width="98px" src={`/assets/icons/${techLogo}.png`} />
+            {TechImage}
             <Text
               display="block"
               fontWeight="bold"
               fontSize="1.25rem"
               textAlign="center"
               mt="1.25rem"
+              textTransform="capitalize"
             >
-              {techName}
+              {tracks[techName]}
             </Text>
             <Text
               fontSize="1.28rem"
@@ -123,7 +127,7 @@ export default function Ticket({
               top={235}
               bottom={0}
             >
-              {numberTicket}
+              {ticketNumber}
             </Text>
           </Flex>
         </Flex>

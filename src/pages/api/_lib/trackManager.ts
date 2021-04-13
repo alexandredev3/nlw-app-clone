@@ -14,7 +14,7 @@ export default async function trackManager(
   tech: string,
   userRef: string
 ): Promise<IResponse> {
-  const track: any = await client.query(
+  const track = await client.query<IResponse>(
     q.If(
       q.Not(
         q.Exists(

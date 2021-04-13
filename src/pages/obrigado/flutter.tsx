@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, Image } from '@chakra-ui/react';
 
 import { useAuth } from '../../hooks/AuthContext';
 
@@ -17,10 +17,18 @@ function FlutterTrack(): JSX.Element {
       </Flex>
       <Flex ml="8rem" align="center" flexDir="column">
         <Ticket
-          techLogo="icon-flutter"
-          numberTicket="000000"
-          techName="Flutter"
-          ticket="flutter"
+          ticketBg={
+            <Image maxW="700px" src="/assets/images/flutter-ticket.svg" />
+          }
+          ticketBgWithUser={
+            <Image
+              maxW="700px"
+              src="/assets/images/flutter-ticket-filled.svg"
+            />
+          }
+          techImage={<Image src="/assets/icons/icon-flutter.png" />}
+          techName="flutter"
+          ticketNumber="00000"
           user={userData}
         />
         {userData && <TicketUrl username={userData.username} />}

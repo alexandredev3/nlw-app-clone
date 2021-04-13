@@ -18,7 +18,7 @@ export default async function subscription(
   name: string,
   email: string
 ): Promise<IResponse> {
-  const user: IResponse = await client.query(
+  const user = await client.query<IResponse>(
     q.If(
       q.Not(
         q.Exists(q.Match(q.Index('find_user_by_email'), q.Casefold(email)))

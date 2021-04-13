@@ -19,7 +19,7 @@ export default async function saveAccount({
   avatarURL,
   userRef,
 }: IUserData): Promise<IResponse | null> {
-  const account: IResponse = await client.query(
+  const account = await client.query<IResponse>(
     q.If(
       q.Not(q.Exists(q.Match(q.Index('find_account_by_username'), username))),
       q.Create(q.Collection('accounts'), {

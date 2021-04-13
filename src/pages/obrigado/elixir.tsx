@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, Image } from '@chakra-ui/react';
 
 import Ticket from '../../components/Ticket';
 import withSubscription from '../../components/withSubscription';
@@ -17,10 +17,15 @@ function ElixirTrack(): JSX.Element {
       </Flex>
       <Flex ml="8rem" align="center" flexDir="column">
         <Ticket
-          techLogo="icon-elixir"
-          numberTicket="000000"
-          techName="Elixir"
-          ticket="elixir"
+          ticketBg={
+            <Image maxW="700px" src="/assets/images/elixir-ticket.svg" />
+          }
+          ticketBgWithUser={
+            <Image maxW="700px" src="/assets/images/elixir-ticket-filled.svg" />
+          }
+          techImage={<Image src="/assets/icons/icon-elixir.png" />}
+          techName="elixir"
+          ticketNumber="00000"
           user={userData}
         />
         {userData && <TicketUrl username={userData.username} />}

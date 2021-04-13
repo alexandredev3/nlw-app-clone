@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, Image } from '@chakra-ui/react';
 
 import Ticket from '../../components/Ticket';
 import withSubscription from '../../components/withSubscription';
@@ -17,10 +17,13 @@ function NodeTrack(): JSX.Element {
       </Flex>
       <Flex ml="8rem" align="center" flexDir="column">
         <Ticket
-          techLogo="icon-node"
-          numberTicket="000000"
-          techName="NodeJS"
-          ticket="node"
+          ticketBg={<Image maxW="700px" src="/assets/images/node-ticket.svg" />}
+          ticketBgWithUser={
+            <Image maxW="700px" src="/assets/images/node-ticket-filled.svg" />
+          }
+          techImage={<Image src="/assets/icons/icon-node.png" />}
+          techName="node"
+          ticketNumber="00000"
           user={userData}
         />
         {userData && <TicketUrl username={userData.username} />}

@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, Image } from '@chakra-ui/react';
 
 import Ticket from '../../components/Ticket';
 import withSubscription from '../../components/withSubscription';
@@ -16,10 +16,18 @@ function ReactNativeTrack(): JSX.Element {
       </Flex>
       <Flex ml="8rem" align="center" flexDir="column">
         <Ticket
-          techLogo="icon-react"
-          numberTicket="000000"
-          techName="React Native"
-          ticket="reactnative"
+          ticketBg={
+            <Image maxW="700px" src="/assets/images/reactnative-ticket.svg" />
+          }
+          ticketBgWithUser={
+            <Image
+              maxW="700px"
+              src="/assets/images/reactnative-ticket-filled.svg"
+            />
+          }
+          techImage={<Image src="/assets/icons/icon-reactnative.png" />}
+          techName="reactnative"
+          ticketNumber="00000"
           user={userData}
         />
         {userData && <TicketUrl username={userData.username} />}

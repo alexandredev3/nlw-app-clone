@@ -15,7 +15,7 @@ interface Props {
 export default function TicketUrl({ username }: Props): JSX.Element {
   const url = `http://localhost:3000/convite/${username}`;
 
-  function CopyUrlOnClipnoard() {
+  function CopyUrlOnClipboard() {
     navigator.clipboard.writeText(url);
   }
 
@@ -39,7 +39,7 @@ export default function TicketUrl({ username }: Props): JSX.Element {
           isReadOnly
         />
         <InputRightElement
-          onClick={CopyUrlOnClipnoard}
+          onClick={CopyUrlOnClipboard}
           children={<CopyIcon />}
           h="72px"
           mr="1.4rem"

@@ -7,11 +7,21 @@ import {
   VStack,
   Checkbox,
 } from '@chakra-ui/react';
+import { GetServerSideProps } from 'next';
 
 import Input from '../../components/Input';
 import Ticket from '../../components/Ticket';
 
-export default function TicketAccept(): JSX.Element {
+import getAccount, { IAccount } from '../api/_lib/getAccount';
+
+interface IProps {
+  account: IAccount;
+  track: string;
+}
+
+export default function TicketAccept({ account, track }: IProps): JSX.Element {
+  console.log(account);
+
   return (
     <Flex
       layerStyle="base"
@@ -144,17 +154,44 @@ export default function TicketAccept(): JSX.Element {
 
       <Flex alignItems="center">
         <Ticket
-          techLogo="icon-elixir"
-          numberTicket="000000"
-          techName="Elixir"
-          ticket="elixir-ticket"
-          user={{
-            name: 'Alexandre Costa',
-            username: 'alexandredev3',
-            avatarURL: 'https://github.com/alexandredev3.png',
-          }}
+          ticketBg={
+            <Image maxW="700px" src={`/assets/images/${track}-ticket.svg`} />
+          }
+          ticketBgWithUser={
+            <Image
+              maxW="700px"
+              src={`/assets/images/${track}-ticket-filled.svg`}
+            />
+          }
+          techImage={<Image src={`/assets/icons/icon-${track}.png`} />}
+          techName={track}
+          ticketNumber="00000"
+          user={account}
         />
       </Flex>
     </Flex>
   );
 }
+
+export const getServerSideProps: GetServerSideProps<IProps> = async (
+  context
+): Promise<any> => {
+  const { username } = context.query;
+
+  const account = await getAccount(username);
+
+  if (!account) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      ...account,
+    },
+  };
+};
