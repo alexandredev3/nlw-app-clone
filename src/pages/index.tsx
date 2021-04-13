@@ -22,7 +22,7 @@ import { useSubscribe } from '../hooks/SubscribeContext';
 const SubscribeSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, 'Campo nome deve ter pelo menos 3 caracteres')
-    .max(40, 'Campo nome precisa ter menos de 40 caracteres')
+    .max(40, 'Campo nome a atingiu o limite de 40 caracteres')
     .required('Campo nome é obrigatório'),
   email: Yup.string()
     .email('Digite um E-mail valido')
@@ -116,13 +116,11 @@ export default function Subscribe(): JSX.Element {
           </Flex>
         </Flex>
         <Formik
-          onSubmit={async (values: ISubscribeData, actions) =>
-            handleSubmit(values, actions)
-          }
+          onSubmit={(values, actions) => handleSubmit(values, actions)}
           initialValues={{ name: '', email: '', acceptTerms: false }}
           validationSchema={SubscribeSchema}
         >
-          {(props: FormikProps<any>) => (
+          {(props: FormikProps<ISubscribeData>) => (
             <Form>
               <Flex
                 flexDirection="column"
@@ -236,23 +234,25 @@ export default function Subscribe(): JSX.Element {
                     <Field name="acceptTerms">
                       {({ field, form }) => (
                         <FormControl isInvalid={form.errors.acceptTerms}>
-                          <Checkbox
-                            name={field.name}
-                            color="grey.100"
-                            spacing={3}
-                            size="lg"
-                            borderColor="grey.300"
-                            colorScheme="green"
-                            value={field.value}
-                            onChange={field.onChange}
-                          >
-                            <Text fontSize="1.25rem">
-                              Concordo em receber comunicações
-                            </Text>
-                          </Checkbox>
-                          <FormErrorMessage fontSize="1.25rem">
-                            {form.errors.acceptTerms}
-                          </FormErrorMessage>
+                          <Flex flexDir="column" alignItems="center">
+                            <Checkbox
+                              name={field.name}
+                              color="grey.100"
+                              spacing={3}
+                              size="lg"
+                              borderColor="grey.300"
+                              colorScheme="green"
+                              value={field.value}
+                              onChange={field.onChange}
+                            >
+                              <Text fontSize="1.25rem">
+                                Concordo em receber comunicações
+                              </Text>
+                            </Checkbox>
+                            <FormErrorMessage fontSize="1.25rem">
+                              {form.errors.acceptTerms}
+                            </FormErrorMessage>
+                          </Flex>
                         </FormControl>
                       )}
                     </Field>

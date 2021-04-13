@@ -48,6 +48,12 @@ export function SubscribeProvider({
     email: string
   ): Promise<void | Element> {
     try {
+      const sessionToken = sessionStorage.getItem('session-token');
+
+      if (sessionToken) {
+        return push('/track');
+      }
+
       const response = await api.post('/subscribe', { name, email });
       const { token } = response.data;
 
