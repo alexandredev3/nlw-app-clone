@@ -3,7 +3,7 @@ import { Flex, Image } from '@chakra-ui/react';
 import Ticket from '../../components/Ticket';
 import withSubscription from '../../components/withSubscription';
 import ConfirmedSubscription from '../../components/ConfirmedSubscription';
-import TicketUrl from '../../components/TickectUrl';
+import TicketUrl from '../../components/TicketUrl';
 import { useAuth } from '../../hooks/AuthContext';
 
 function ReactTrack(): JSX.Element {
@@ -16,15 +16,22 @@ function ReactTrack(): JSX.Element {
       </Flex>
       <Flex ml="8rem" align="center" flexDir="column">
         <Ticket
-          ticketBg={
-            <Image maxW="700px" src="/assets/images/react-ticket.svg" />
-          }
-          ticketBgWithUser={
-            <Image maxW="700px" src="/assets/images/react-ticket-filled.svg" />
-          }
-          techImage={<Image src="/assets/icons/icon-react.png" />}
-          techName="react"
-          ticketNumber="00000"
+          ticket={{
+            background: (
+              <Image maxW="700px" src="/assets/images/react-ticket.svg" />
+            ),
+            backgroundWithUser: (
+              <Image
+                maxW="700px"
+                src="/assets/images/react-ticket-filled.svg"
+              />
+            ),
+            number: '0000000',
+          }}
+          tech={{
+            track: 'react',
+            image: <Image src="/assets/icons/icon-react.png" />,
+          }}
           user={userData}
         />
         {userData && <TicketUrl username={userData.username} />}

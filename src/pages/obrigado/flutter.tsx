@@ -5,7 +5,7 @@ import { useAuth } from '../../hooks/AuthContext';
 import Ticket from '../../components/Ticket';
 import withSubscription from '../../components/withSubscription';
 import ConfirmedSubscription from '../../components/ConfirmedSubscription';
-import TicketUrl from '../../components/TickectUrl';
+import TicketUrl from '../../components/TicketUrl';
 
 function FlutterTrack(): JSX.Element {
   const { userData } = useAuth();
@@ -17,18 +17,22 @@ function FlutterTrack(): JSX.Element {
       </Flex>
       <Flex ml="8rem" align="center" flexDir="column">
         <Ticket
-          ticketBg={
-            <Image maxW="700px" src="/assets/images/flutter-ticket.svg" />
-          }
-          ticketBgWithUser={
-            <Image
-              maxW="700px"
-              src="/assets/images/flutter-ticket-filled.svg"
-            />
-          }
-          techImage={<Image src="/assets/icons/icon-flutter.png" />}
-          techName="flutter"
-          ticketNumber="00000"
+          ticket={{
+            background: (
+              <Image maxW="700px" src="/assets/images/flutter-ticket.svg" />
+            ),
+            backgroundWithUser: (
+              <Image
+                maxW="700px"
+                src="/assets/images/flutter-ticket-filled.svg"
+              />
+            ),
+            number: '0000000',
+          }}
+          tech={{
+            track: 'flutter',
+            image: <Image src="/assets/icons/icon-flutter.png" />,
+          }}
           user={userData}
         />
         {userData && <TicketUrl username={userData.username} />}

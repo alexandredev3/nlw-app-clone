@@ -1,14 +1,18 @@
-import { Box, Flex, Image, Text } from '@chakra-ui/react';
+import { Box, Flex, Text, Image } from '@chakra-ui/react';
 import tracks from '../../utils/tracks';
 
 import GithubIcon from '../GithubIcon';
 
 interface Props {
-  techName: string;
-  ticketBg: JSX.Element;
-  techImage: JSX.Element;
-  ticketBgWithUser: JSX.Element;
-  ticketNumber: string;
+  ticket: {
+    background: JSX.Element;
+    backgroundWithUser: JSX.Element;
+    number: string;
+  };
+  tech: {
+    track: string;
+    image: JSX.Element;
+  };
   user?: {
     name: string;
     username: string;
@@ -16,17 +20,17 @@ interface Props {
   };
 }
 
-export default function Ticket({
-  techName,
-  ticketNumber,
-  user,
-  ticketBg: TicketBg,
-  ticketBgWithUser: TicketBgWithUser,
-  techImage: TechImage,
-}: Props): JSX.Element {
+export default function Ticket({ ticket, tech, user }: Props): JSX.Element {
+  const {
+    background: Background,
+    backgroundWithUser: BackgroundWithUser,
+    number,
+  } = ticket;
+  const { track, image: TechImage } = tech;
+
   return (
     <Box position="relative">
-      {user ? TicketBg : TicketBgWithUser}
+      {user ? BackgroundWithUser : Background}
       <Flex>
         <Flex
           position="absolute"
@@ -111,7 +115,7 @@ export default function Ticket({
               mt="1.25rem"
               textTransform="capitalize"
             >
-              {tracks[techName]}
+              {tracks[track]}
             </Text>
             <Text
               fontSize="1.28rem"
@@ -120,7 +124,7 @@ export default function Ticket({
               top={235}
               bottom={0}
             >
-              {ticketNumber}
+              {number}
             </Text>
           </Flex>
         </Flex>

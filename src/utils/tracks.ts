@@ -1,5 +1,5 @@
 const tracks = {
-  react: 'React',
+  react: 'ReactJS',
   reactnative: 'React Native',
   node: 'Node',
   elixir: 'Elixir',

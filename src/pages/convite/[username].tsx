@@ -263,18 +263,22 @@ export default function TicketAccept({ account, track }: IProps): JSX.Element {
 
       <Flex alignItems="center">
         <Ticket
-          ticketBg={
-            <Image maxW="700px" src={`/assets/images/${track}-ticket.svg`} />
-          }
-          ticketBgWithUser={
-            <Image
-              maxW="700px"
-              src={`/assets/images/${track}-ticket-filled.svg`}
-            />
-          }
-          techImage={<Image src={`/assets/icons/icon-${track}.png`} />}
-          techName={track}
-          ticketNumber="00000"
+          ticket={{
+            background: (
+              <Image maxW="700px" src={`/assets/images/${track}-ticket.svg`} />
+            ),
+            backgroundWithUser: (
+              <Image
+                maxW="700px"
+                src={`/assets/images/${track}-ticket-filled.svg`}
+              />
+            ),
+            number: '0000000',
+          }}
+          tech={{
+            track,
+            image: <Image src={`/assets/icons/icon-${track}.png`} />,
+          }}
           user={account}
         />
       </Flex>
