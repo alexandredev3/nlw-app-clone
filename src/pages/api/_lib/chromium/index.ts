@@ -1,10 +1,5 @@
 import chromium from 'chrome-aws-lambda';
-import {
-  Browser,
-  LaunchOptions,
-  Page,
-  ScreenshotOptions,
-} from 'puppeteer-core';
+import { Browser, LaunchOptions, Page } from 'puppeteer-core';
 
 import getOptions from './chromiumOptions';
 
@@ -23,7 +18,7 @@ async function lauchChromium(options?: LaunchOptions): Promise<Browser> {
   return browser;
 }
 
-async function getPage() {
+export default async function getPage(): Promise<Page> {
   if (_page) return _page;
 
   const page = await (await lauchChromium()).newPage();
@@ -31,18 +26,4 @@ async function getPage() {
   _page = page;
 
   return page;
-}
-
-export default async function getScreenshot(
-  html: string,
-  options: ScreenshotOptions
-): Promise<string | void | Buffer> {
-  const page = await getPage();
-
-  await page.setViewport({ width: 1280, height: 630 });
-  await page.setContent(html);
-
-  const screenshot = await page.screenshot(options);
-
-  return screenshot;
 }
