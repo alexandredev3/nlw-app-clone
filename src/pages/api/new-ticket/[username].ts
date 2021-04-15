@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import getAccount from '../_lib/getAccount';
 import ticketLayout from '../_lib/ticket/ticketLayout';
-import getScreenshot from '../_lib/ticket/chromium';
+import getScreenshot from '../_lib/chromium';
 import tracks from '../../../utils/tracks';
 
 const techs = {
