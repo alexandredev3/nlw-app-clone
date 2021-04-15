@@ -21,7 +21,6 @@ type ITrackResponse = {
   };
 };
 
-// rename getAccount to getTicket or something like that!
 export default async function getAccount(username: string | string[]) {
   const account = await client.query<IAccountResponse>(
     q.If(

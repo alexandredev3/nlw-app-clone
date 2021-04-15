@@ -33,7 +33,8 @@
     "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
     "import/extensions": ["off"],
     "react/no-children-prop": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "no-underscore-dangle": ["error", { "allow": ["_page", "_browser"] }]
   },
   "settings": {
     "import/resolver": {
