@@ -9,7 +9,7 @@ import {
 import CopyIcon from '../CopyIcon';
 
 interface Props {
-  username: string;
+  username: string | string[];
 }
 
 export default function TicketUrl({ username }: Props): JSX.Element {

@@ -13,22 +13,16 @@ interface IAuthProviderProps {
   children: ReactNode;
 }
 
-interface IUserData {
-  username: string;
-  name: string;
-  avatarURL: string;
-}
-
 interface IAuthContextData {
   handleAuth: () => void;
-  userData: IUserData;
+  account: IAccount;
   isSubmitting: boolean;
 }
 
 const AuthContext = createContext<IAuthContextData>({} as IAuthContextData);
 
 export function AuthProvider({ children }: IAuthProviderProps): JSX.Element {
-  const [userData, setUserData] = useState<IUserData | null>(null);
+  const [account, setAccount] = useState<IAccount | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleAuth = useCallback(async () => {
@@ -49,7 +43,7 @@ export function AuthProvider({ children }: IAuthProviderProps): JSX.Element {
         avatarURL: avatar_url,
       });
 
-      setUserData({
+      setAccount({
         username,
         name,
         avatarURL: avatar_url,
@@ -61,7 +55,7 @@ export function AuthProvider({ children }: IAuthProviderProps): JSX.Element {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ handleAuth, isSubmitting, userData }}>
+    <AuthContext.Provider value={{ handleAuth, isSubmitting, account }}>
       {children}
     </AuthContext.Provider>
   );

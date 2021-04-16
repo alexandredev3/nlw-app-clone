@@ -7,7 +7,7 @@ import ConfirmedSubscription from '../../components/ConfirmedSubscription';
 import TicketUrl from '../../components/TicketUrl';
 
 function ReactNativeTrack(): JSX.Element {
-  const { userData } = useAuth();
+  const { account } = useAuth();
 
   return (
     <Flex justifyContent="center" alignItems="center" pt="100px">
@@ -32,9 +32,9 @@ function ReactNativeTrack(): JSX.Element {
             track: 'reactnative',
             image: <Image src="/assets/icons/icon-reactnative.png" />,
           }}
-          user={userData}
+          account={account}
         />
-        {userData && <TicketUrl username={userData.username} />}
+        {account && <TicketUrl username={account.username} />}
       </Flex>
     </Flex>
   );

@@ -13,14 +13,10 @@ interface Props {
     track: string;
     image: JSX.Element;
   };
-  user?: {
-    name: string;
-    username: string;
-    avatarURL: string;
-  };
+  account?: IAccount;
 }
 
-export default function Ticket({ ticket, tech, user }: Props): JSX.Element {
+export default function Ticket({ ticket, tech, account }: Props): JSX.Element {
   const {
     background: Background,
     backgroundWithUser: BackgroundWithUser,
@@ -30,7 +26,7 @@ export default function Ticket({ ticket, tech, user }: Props): JSX.Element {
 
   return (
     <Box position="relative">
-      {user ? BackgroundWithUser : Background}
+      {account ? BackgroundWithUser : Background}
       <Flex>
         <Flex
           position="absolute"
@@ -43,19 +39,19 @@ export default function Ticket({ ticket, tech, user }: Props): JSX.Element {
         >
           <Flex flexDir="column">
             <Flex alignItems="center">
-              {user ? (
-                <Image src={user.avatarURL} w="92px" borderRadius="50%" />
+              {account ? (
+                <Image src={account.avatarURL} w="92px" borderRadius="50%" />
               ) : (
                 <Image src="/assets/icons/avatar-icon.svg" w="92px" />
               )}
               <Flex flexDir="column" ml="1.25rem">
                 <Text color="white.100" fontSize="1.76rem" fontWeight="bold">
-                  {user ? user.name : 'Seu nome'}
+                  {account ? account.name : 'Seu nome'}
                 </Text>
                 <Flex alignItems="center">
                   <GithubIcon size={24} color="#A8A8B3" />
                   <Text color="grey.100" ml="0.75rem">
-                    {user ? user.username : 'Username'}
+                    {account ? account.username : 'Username'}
                   </Text>
                 </Flex>
               </Flex>

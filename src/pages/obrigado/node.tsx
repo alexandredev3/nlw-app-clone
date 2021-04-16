@@ -8,7 +8,7 @@ import TicketUrl from '../../components/TicketUrl';
 import { useAuth } from '../../hooks/AuthContext';
 
 function NodeTrack(): JSX.Element {
-  const { userData } = useAuth();
+  const { account } = useAuth();
 
   return (
     <Flex justifyContent="center" alignItems="center" pt="100px">
@@ -30,9 +30,9 @@ function NodeTrack(): JSX.Element {
             track: 'node',
             image: <Image src="/assets/icons/icon-node.png" />,
           }}
-          user={userData}
+          account={account}
         />
-        {userData && <TicketUrl username={userData.username} />}
+        {account && <TicketUrl username={account.username} />}
       </Flex>
     </Flex>
   );

@@ -8,7 +8,7 @@ import TicketUrl from '../../components/TicketUrl';
 import { useAuth } from '../../hooks/AuthContext';
 
 function ElixirTrack(): JSX.Element {
-  const { userData } = useAuth();
+  const { account } = useAuth();
 
   return (
     <Flex justifyContent="center" alignItems="center" pt="100px">
@@ -33,9 +33,9 @@ function ElixirTrack(): JSX.Element {
             track: 'elixir',
             image: <Image src="/assets/icons/icon-elixir.png" />,
           }}
-          user={userData}
+          account={account}
         />
-        {userData && <TicketUrl username={userData.username} />}
+        {account && <TicketUrl username={account.username} />}
       </Flex>
     </Flex>
   );

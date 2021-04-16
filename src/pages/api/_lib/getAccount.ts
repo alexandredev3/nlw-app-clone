@@ -2,15 +2,6 @@ import { query as q } from 'faunadb';
 
 import client from '../../../services/fauna';
 
-export type IAccount = {
-  name: string;
-  username: string;
-  avatarURL: string;
-  userRef: {
-    id: string;
-  };
-};
-
 type IAccountResponse = {
   data: IAccount;
 };
@@ -21,7 +12,14 @@ type ITrackResponse = {
   };
 };
 
-export default async function getAccount(username: string | string[]) {
+type IResponse = {
+  account: IAccount;
+  track: string;
+};
+
+export default async function getAccount(
+  username: string | string[]
+): Promise<IResponse | null> {
   const account = await client.query<IAccountResponse>(
     q.If(
       q.Exists(q.Match(q.Index('find_account_by_username'), username)),
@@ -43,13 +41,16 @@ export default async function getAccount(username: string | string[]) {
     )
   );
 
-  const { name, avatarURL } = account.data;
+  const { name, avatarURL, userRef } = account.data;
 
   return {
     account: {
       name,
       username,
       avatarURL,
+      userRef: {
+        id: userRef.id,
+      },
     },
     track: track.data.tech,
   };

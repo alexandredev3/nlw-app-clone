@@ -1,4 +1,4 @@
-import { Collection, query as q } from 'faunadb';
+import { query as q } from 'faunadb';
 
 import client from '../../../services/fauna';
 

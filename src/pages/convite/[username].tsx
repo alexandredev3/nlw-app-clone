@@ -24,7 +24,6 @@ import Input from '../../components/Input';
 import Ticket from '../../components/Ticket';
 import FormButton from '../../components/FormButton';
 
-import { IAccount } from '../api/_lib/getAccount';
 import { useSubscribe } from '../../hooks/SubscribeContext';
 import getUserTicket from '../api/user/ticket';
 
@@ -284,7 +283,7 @@ export default function TicketAccept({
               track,
               image: <Image src={`/assets/icons/icon-${track}.png`} />,
             }}
-            user={account}
+            account={account}
           />
         </Flex>
       </Flex>
@@ -295,8 +294,6 @@ export default function TicketAccept({
 export const getServerSideProps: GetServerSideProps<IProps> = async (
   context
 ): Promise<any> => {
-  // colocar tudo isso em uma rota...
-
   const { username } = context.query;
 
   const ticket = await getUserTicket(username);
