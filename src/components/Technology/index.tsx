@@ -31,7 +31,7 @@ export default function Technology({
       await submit({ throwOnError: true });
       push(`/obrigado/${techName}`);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
     setIsSubmitting(false);
   }

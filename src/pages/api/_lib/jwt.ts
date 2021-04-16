@@ -5,7 +5,10 @@ type IPayload = {
   userRef: string;
 };
 
-const { PUBLIC_KEY, PRIVATE_KEY } = process.env;
+// eslint-disable-next-line prefer-destructuring
+const PUBLIC_KEY = process.env.PUBLIC_KEY;
+// eslint-disable-next-line prefer-destructuring
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 function extractToken(request: NextApiRequest): string {
   const authorizationHeader = request.headers.authorization || '';

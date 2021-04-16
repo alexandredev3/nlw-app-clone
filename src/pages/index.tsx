@@ -2,8 +2,6 @@ import {
   Flex,
   Text,
   Image,
-  Button,
-  ButtonGroup,
   VStack,
   Checkbox,
   StackDivider,
@@ -17,6 +15,7 @@ import { Formik, Field, Form, FormikProps, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 
 import Input from '../components/Input';
+import FormButton from '../components/FormButton';
 import { useSubscribe } from '../hooks/SubscribeContext';
 
 const SubscribeSchema = Yup.object().shape({
@@ -181,50 +180,9 @@ export default function Subscribe(): JSX.Element {
                   </Field>
                 </Box>
                 <VStack spacing={10}>
-                  <ButtonGroup
-                    zIndex={1}
-                    width="100%"
-                    transition="filter 200ms"
-                    _hover={{
-                      filter: 'brightness(1.1)',
-                    }}
-                    marginTop={7}
-                  >
-                    <Button
-                      as="button"
-                      type="submit"
-                      bg="purple.300"
-                      isLoading={props.isSubmitting}
-                      variant="solid"
-                      color="white.50"
-                      width="100%"
-                      height="76px"
-                      _before={{
-                        content: "''",
-                        width: '100%',
-                        height: '76px',
-                        bg: 'purple.400',
-                        position: 'absolute',
-                        top: '8px',
-                        borderRadius: 'md',
-                        zIndex: -1,
-                      }}
-                      _loading={{
-                        opacity: 1,
-                        fontSize: '1.25rem',
-                      }}
-                      _hover={null}
-                      _active={{
-                        top: '8px',
-                        _before: {
-                          top: '0px',
-                        },
-                      }}
-                      _focus={null}
-                    >
-                      <Text fontSize="1.24rem">QUERO ME INSCREVER</Text>
-                    </Button>
-                  </ButtonGroup>
+                  <FormButton isSubmitting={props.isSubmitting}>
+                    <Text fontSize="1.24rem">QUERO ME INSCREVER</Text>
+                  </FormButton>
 
                   <Flex
                     flexDir="column"
