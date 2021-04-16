@@ -15,8 +15,8 @@ import { Formik, Field, Form, FormikProps, FormikHelpers } from 'formik';
 
 import Input from '../components/Input';
 import FormButton from '../components/FormButton';
-import { useSubscribe } from '../hooks/SubscribeContext';
 import subscribeValidationSchema from '../lib/validationSchemas/subscribe';
+import { useSubscribe } from '../hooks/SubscribeContext';
 
 interface ISubscribeData {
   name: string;

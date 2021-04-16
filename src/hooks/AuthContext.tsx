@@ -8,6 +8,7 @@ import {
 import api from '../services/axios';
 
 import { firebaseClient, githubProvider } from '../services/firebase';
+import useToast from './useToast';
 
 interface IAuthProviderProps {
   children: ReactNode;
@@ -22,6 +23,7 @@ interface IAuthContextData {
 const AuthContext = createContext<IAuthContextData>({} as IAuthContextData);
 
 export function AuthProvider({ children }: IAuthProviderProps): JSX.Element {
+  const { addToast } = useToast();
   const [account, setAccount] = useState<IAccount | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -48,8 +50,15 @@ export function AuthProvider({ children }: IAuthProviderProps): JSX.Element {
         name,
         avatarURL: avatar_url,
       });
+      addToast({
+        status: 'success',
+        description: `Sua conta do github foi cadastrada com sucesso! Aproveite o evento ${name}!`,
+      });
     } catch (error) {
-      alert(error);
+      addToast({
+        status: 'error',
+        description: `Ocorreu um erro ao cadastrar sua conta com o github!`,
+      });
     }
     setIsSubmitting(false);
   }, []);

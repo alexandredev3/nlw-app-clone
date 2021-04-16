@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import useTrack from '../../hooks/queries/useTrack';
 import tracks from '../../utils/tracks';
+import useToast from '../../hooks/useToast';
 
 interface Props {
   techName: string;
@@ -21,6 +22,7 @@ export default function Technology({
   techIcon: TechIcon,
 }: Props): JSX.Element {
   const { push } = useRouter();
+  const { addToast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { submit, isLoading } = useTrack(techName);
@@ -30,8 +32,15 @@ export default function Technology({
       setIsSubmitting(true);
       await submit({ throwOnError: true });
       push(`/obrigado/${techName}`);
+      addToast({
+        status: 'success',
+        description: `Trilha ${tracks[techName]} selecionada com sucesso!`,
+      });
     } catch (error) {
-      console.log(error);
+      addToast({
+        status: 'error',
+        description: `Ocorreu um erro ao selecionar a trilha ${tracks[techName]}!`,
+      });
     }
     setIsSubmitting(false);
   }

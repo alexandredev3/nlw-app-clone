@@ -9,6 +9,7 @@ import {
 import { useRouter } from 'next/router';
 
 import api from '../services/axios';
+import useToast from './useToast';
 
 interface ISubscribeProviderProps {
   children: ReactNode;
@@ -32,6 +33,7 @@ export function SubscribeProvider({
 }: ISubscribeProviderProps): JSX.Element {
   const [userData, setUserData] = useState<IUserData | null>(null);
   const { push } = useRouter();
+  const { addToast } = useToast();
 
   useEffect(() => {
     const sessionToken = sessionStorage.getItem('session-token');
@@ -61,17 +63,16 @@ export function SubscribeProvider({
       sessionStorage.setItem('session-token', String(token));
       push('/track');
 
+      addToast({
+        status: 'success',
+        description: 'Sua inscrição foi realizada com sucesso!',
+      });
       return setUserData(token);
     } catch (error) {
-      return (
-        <Alert status="error">
-          <AlertIcon />
-          <AlertTitle>
-            Ocorreu um error inesperado, tente mais tarde.
-          </AlertTitle>
-          <CloseButton />
-        </Alert>
-      );
+      return addToast({
+        status: 'error',
+        description: 'Ocorreu um erro ao concluir sua inscrição!',
+      });
     }
   }
 
