@@ -4,6 +4,7 @@ import {
   InputGroup,
   InputRightElement,
   Text,
+  useClipboard,
 } from '@chakra-ui/react';
 
 import CopyIcon from '../CopyIcon';
@@ -16,9 +17,7 @@ interface Props {
 export default function TicketUrl({ username }: Props): JSX.Element {
   const URL = `${baseURL}/convite/${username}`;
 
-  function CopyUrlOnClipboard() {
-    navigator.clipboard.writeText(URL);
-  }
+  const { onCopy } = useClipboard(URL);
 
   return (
     <Flex color="grey.200" alignItems="center" mt="6rem" mr="4rem">
@@ -35,7 +34,7 @@ export default function TicketUrl({ username }: Props): JSX.Element {
           color="grey.50"
           border={0}
           bg="black.100"
-          value="https://nextlevelweek-clone-alexandredev3.vercel.app/api/convite/alexandredev3"
+          value={URL}
           variant="solid"
           isReadOnly
           display="block"
@@ -43,7 +42,7 @@ export default function TicketUrl({ username }: Props): JSX.Element {
           textOverflow="ellipsis"
         />
         <InputRightElement
-          onClick={CopyUrlOnClipboard}
+          onClick={onCopy}
           children={<CopyIcon />}
           h="72px"
           mr="1.4rem"
