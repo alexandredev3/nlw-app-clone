@@ -26,6 +26,7 @@ import FormButton from '../../components/FormButton';
 
 import { useSubscribe } from '../../hooks/SubscribeContext';
 import getUserTicket from '../api/user/ticket';
+import subscribeValidationSchema from '../../lib/validationSchemas/subscribeSchema';
 
 interface IProps {
   account: IAccount;
@@ -38,19 +39,6 @@ interface ISubscribeData {
   email: string;
   acceptTerms: boolean;
 }
-
-const SubscribeSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(3, 'Campo nome deve ter pelo menos 3 caracteres')
-    .max(40, 'Campo nome a atingiu o limite de 40 caracteres')
-    .required('Campo nome é obrigatório'),
-  email: Yup.string()
-    .email('Digite um E-mail valido')
-    .required('Campo E-mail é obrigatório'),
-  acceptTerms: Yup.boolean().isTrue(
-    'Você precisa concordar para concluir sua inscrição'
-  ),
-});
 
 export default function TicketAccept({
   account,
@@ -116,7 +104,7 @@ export default function TicketAccept({
         <Formik
           onSubmit={(values, actions) => handleSubmit(values, actions)}
           initialValues={{ name: '', email: '', acceptTerms: false }}
-          validationSchema={SubscribeSchema}
+          validationSchema={subscribeValidationSchema}
         >
           {(props: FormikProps<ISubscribeData>) => (
             <Form>
