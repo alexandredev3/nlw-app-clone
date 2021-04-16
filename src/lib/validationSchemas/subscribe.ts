@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-const subscribeValidationSchema = Yup.object().shape({
+const subscribe = Yup.object().shape({
   name: Yup.string()
     .min(3, 'Campo nome deve ter pelo menos 3 caracteres')
     .max(40, 'Campo nome a atingiu o limite de 40 caracteres')
@@ -13,4 +13,4 @@ const subscribeValidationSchema = Yup.object().shape({
   ),
 });
 
-export default subscribeValidationSchema;
+export default subscribe;
