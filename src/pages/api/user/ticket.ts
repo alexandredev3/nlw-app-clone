@@ -1,7 +1,14 @@
 import getAccount from '../_lib/getAccount';
 import baseURL from '../../../utils/baseURL';
 
-export default async (username: string | string[]) => {
+type IResponse = {
+  account: IAccount;
+  ticketURL: string;
+};
+
+export default async (
+  username: string | string[]
+): Promise<IResponse | null> => {
   try {
     const account = await getAccount(username);
 
@@ -9,7 +16,7 @@ export default async (username: string | string[]) => {
       return null;
     }
 
-    const ticketURL = `${baseURL}/nlw-ticket.png?username=${username}`;
+    const ticketURL = `${baseURL}/api/nlw-ticket.png?username=${username}`;
 
     return {
       ...account,
@@ -17,5 +24,6 @@ export default async (username: string | string[]) => {
     };
   } catch (error) {
     console.error(error);
+    return null;
   }
 };
