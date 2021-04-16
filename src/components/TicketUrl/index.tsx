@@ -27,7 +27,7 @@ export default function TicketUrl({ username }: Props): JSX.Element {
       </Text>
       <InputGroup>
         <Input
-          minW="370px"
+          minW="420px"
           w="100%"
           h="64px"
           pl="2rem"
@@ -35,9 +35,12 @@ export default function TicketUrl({ username }: Props): JSX.Element {
           color="grey.50"
           border={0}
           bg="black.100"
-          value={URL}
+          value="https://nextlevelweek-clone-alexandredev3.vercel.app/api/convite/alexandredev3"
           variant="solid"
           isReadOnly
+          display="block"
+          whiteSpace="nowrap"
+          textOverflow="ellipsis"
         />
         <InputRightElement
           onClick={CopyUrlOnClipboard}
