@@ -1,4 +1,5 @@
 import { Flex, Heading, Text, Grid, GridItem, Image } from '@chakra-ui/react';
+import Head from 'next/head';
 
 import Technology from '../components/Technology';
 import withSubscription from '../components/withSubscription';
@@ -93,34 +94,84 @@ const tracks = [
 
 function Track(): JSX.Element {
   return (
-    <Flex
-      as="header"
-      flexDirection="column"
-      maxW="1280px"
-      w="100%"
-      margin="0 auto"
-    >
-      <Flex alignItems="center" mt="4.75rem" mb="8rem">
-        <Heading fontSize="2.74rem" mr="3.75rem">
-          Trilhas <br /> disponíveis
-        </Heading>
-        <Text fontSize="1.2rem" color="grey.100" w="700px">
-          <span style={{ color: '#04e168', fontWeight: 'bold' }}>
-            Tenha foco:
-          </span>{' '}
-          escolha apenas uma trilha porque vai ter muito conteúdo e você precisa
-          absorver tudo a fundo. Falta de foco e conhecimento superficial é o
-          que vai te impedir de alcançar seus objetivos.
-        </Text>
+    <>
+      <Head>
+        <title>Para finalizar sua inscrição, escolha a sua trilha:</title>
+        <meta
+          name="description"
+          content="Um evento para dar o próximo passo na sua evolução como programadora ou programador."
+        />
+        <meta property="og:image:alt" content="Boost yourself" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="3840" />
+        <meta property="og:image:height" content="2160" />
+        <meta
+          name="og:description"
+          content="Um evento para dar o próximo passo na sua evolução como programadora ou programador."
+        />
+        <meta
+          name="twitter:title"
+          content="Para finalizar sua inscrição, escolha a sua trilha:"
+        />
+        <meta
+          property="og:image"
+          content="https://nextlevelweek.com/og/next-level-week.png"
+        />
+        <meta
+          property="og:image:secure_url"
+          content="https://nextlevelweek.com/og/next-level-week.png"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:image"
+          content="https://nextlevelweek.com/og/next-level-week.png"
+        />
+        <meta
+          name="twitter:image:src"
+          content="https://nextlevelweek.com/og/next-level-week.png"
+        />
+        <meta name="twitter:image:alt" content="Boost yourself" />
+        <meta name="twitter:image:width" content="1280" />
+        <meta name="twitter:image:height" content="630" />
+        <meta
+          property="twitter:description"
+          content="Um evento para dar o próximo passo na sua evolução como programadora ou programador."
+        />
+        <meta
+          property="twitter:image"
+          content="https://nextlevelweek.com/og/next-level-week.png"
+        />
+      </Head>
+      <Flex
+        as="header"
+        flexDirection="column"
+        maxW="1280px"
+        w="100%"
+        margin="0 auto"
+      >
+        <Flex alignItems="center" mt="4.75rem" mb="8rem">
+          <Heading fontSize="2.74rem" mr="3.75rem">
+            Trilhas <br /> disponíveis
+          </Heading>
+          <Text fontSize="1.2rem" color="grey.100" w="700px">
+            <span style={{ color: '#04e168', fontWeight: 'bold' }}>
+              Tenha foco:
+            </span>{' '}
+            escolha apenas uma trilha porque vai ter muito conteúdo e você
+            precisa absorver tudo a fundo. Falta de foco e conhecimento
+            superficial é o que vai te impedir de alcançar seus objetivos.
+          </Text>
+        </Flex>
+        <Grid as="section" templateColumns="repeat(3, 1fr)">
+          {tracks.map(track => (
+            <GridItem key={track.techName}>
+              <Technology {...track} />
+            </GridItem>
+          ))}
+        </Grid>
       </Flex>
-      <Grid as="section" templateColumns="repeat(3, 1fr)">
-        {tracks.map(track => (
-          <GridItem key={track.techName}>
-            <Technology {...track} />
-          </GridItem>
-        ))}
-      </Grid>
-    </Flex>
+    </>
   );
 }
 
