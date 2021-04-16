@@ -18,7 +18,6 @@ import {
   FormikHelpers,
   FieldProps,
 } from 'formik';
-import * as Yup from 'yup';
 
 import Input from '../../components/Input';
 import Ticket from '../../components/Ticket';
@@ -26,7 +25,7 @@ import FormButton from '../../components/FormButton';
 
 import { useSubscribe } from '../../hooks/SubscribeContext';
 import getUserTicket from '../api/user/ticket';
-import subscribeValidationSchema from '../../lib/validationSchemas/subscribeSchema';
+import subscribeValidationSchema from '../../lib/validationSchemas/subscribe';
 
 interface IProps {
   account: IAccount;

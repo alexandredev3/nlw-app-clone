@@ -7,16 +7,17 @@ import {
 } from '@chakra-ui/react';
 
 import CopyIcon from '../CopyIcon';
+import baseURL from '../../utils/baseURL';
 
 interface Props {
   username: string | string[];
 }
 
 export default function TicketUrl({ username }: Props): JSX.Element {
-  const url = `http://localhost:3000/convite/${username}`;
+  const URL = `${baseURL}/convite/${username}`;
 
   function CopyUrlOnClipboard() {
-    navigator.clipboard.writeText(url);
+    navigator.clipboard.writeText(URL);
   }
 
   return (
@@ -34,7 +35,7 @@ export default function TicketUrl({ username }: Props): JSX.Element {
           color="grey.50"
           border={0}
           bg="black.100"
-          value={url}
+          value={URL}
           variant="solid"
           isReadOnly
         />
