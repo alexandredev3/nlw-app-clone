@@ -129,7 +129,7 @@ export default function TicketAccept({
                     fontSize="3rem"
                     width="80%"
                   >
-                    Junte-se a Alexandre Costa Dos Santos
+                    Junte-se a {account.name}
                   </Text>
                   <Text
                     as="h1"
