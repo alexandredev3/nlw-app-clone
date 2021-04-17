@@ -7,9 +7,6 @@ import {
   Heading,
   Stack,
   IconButton,
-  Box,
-  Input,
-  InputGroup,
 } from '@chakra-ui/react';
 
 import GithubIcon from '../GithubIcon';
@@ -26,7 +23,7 @@ export default function ConfirmedSubscription({
   track,
   color,
 }: Props): JSX.Element {
-  const { handleAuth, isSubmitting, userData } = useAuth();
+  const { handleAuth, isSubmitting, account } = useAuth();
 
   return (
     <Flex flexDirection="column">
@@ -40,13 +37,13 @@ export default function ConfirmedSubscription({
         <Heading maxW="474px" w="100%" fontSize="4rem">
           Bem-vindo(a) à <span style={{ color }}>Trilha {track}</span>
         </Heading>
-        {!userData && (
+        {!account && (
           <Text maxW="400px" w="100%" color="grey.100" fontSize="1.75rem">
             Gere seu ticket único com o perfil do GitHub.
           </Text>
         )}
       </Stack>
-      {userData ? (
+      {account ? (
         <>
           <ButtonGroup zIndex={1} transition="filter 200ms" marginTop="3.25rem">
             <IconButton
@@ -78,7 +75,7 @@ export default function ConfirmedSubscription({
               _focus={null}
             >
               <Text fontSize="1.24rem" fontWeight="normal">
-                {userData.username}
+                {account.username}
               </Text>
               <IconButton
                 bg="transparent"
