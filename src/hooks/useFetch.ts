@@ -1,4 +1,4 @@
-import { AxiosRequestConfig } from 'axios';
+import { AxiosRequestConfig, AxiosResponse } from 'axios';
 import api from '../services/axios';
 
 type UseFetchOptions = {
@@ -7,12 +7,12 @@ type UseFetchOptions = {
   config?: AxiosRequestConfig;
 };
 
-const useFetch = async ({
+export default async function useFetch<T>({
   url,
   data,
   config,
-}: UseFetchOptions): Promise<void> => {
-  await api.post(url, data, config);
-};
+}: UseFetchOptions): Promise<AxiosResponse<T>> {
+  const response = await api.post(url, data, config);
 
-export default useFetch;
+  return response;
+}
