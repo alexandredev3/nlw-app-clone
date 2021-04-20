@@ -8,7 +8,7 @@ import {
   FormControl,
   FormErrorMessage,
 } from '@chakra-ui/react';
-import { GetServerSideProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import {
   Formik,
@@ -25,6 +25,7 @@ import FormButton from '../../components/FormButton';
 
 import { useSubscribe } from '../../hooks/SubscribeContext';
 import getUserTicket from '../api/user/ticket';
+import getAccounts from '../api/users';
 import subscribeValidationSchema from '../../lib/validationSchemas/subscribe';
 
 interface IProps {
@@ -278,10 +279,8 @@ export default function TicketAccept({
   );
 }
 
-export const getServerSideProps: GetServerSideProps<IProps> = async (
-  context
-): Promise<any> => {
-  const { username } = context.query;
+export const getStaticProps: GetStaticProps = async context => {
+  const { username } = context.params;
 
   const ticket = await getUserTicket(username);
 
@@ -296,5 +295,21 @@ export const getServerSideProps: GetServerSideProps<IProps> = async (
 
   return {
     props: ticket,
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const accounts = await getAccounts();
+
+  // eslint-disable-next-line no-shadow
+  const paths = accounts.data.map(account => ({
+    params: {
+      username: account.data.username,
+    },
+  }));
+
+  return {
+    paths,
+    fallback: 'blocking',
   };
 };

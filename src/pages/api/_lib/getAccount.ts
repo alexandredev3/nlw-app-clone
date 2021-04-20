@@ -20,7 +20,7 @@ type IResponse = {
 export default async function getAccount(
   username: string | string[]
 ): Promise<IResponse | null> {
-  const account = await client.query<IAccountResponse>(
+  const account = await client.query<IAccountResponse | null>(
     q.If(
       q.Exists(q.Match(q.Index('find_account_by_username'), username)),
       q.Get(q.Match(q.Index('find_account_by_username'), username)),
